@@ -5,536 +5,703 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Crezcamos Juntos | Terapia Ocupacional Pediátrica Especializada</title>
+    <meta name="description"
+        content="Centro de rehabilitación pediátrica especializado en terapia ocupacional para niños y adolescentes. Atención personalizada y interdisciplinaria." />
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600&display=swap"
-        rel="stylesheet" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "secondary-fixed-dim": "#ebc23e",
-                        "error-container": "#ffdad6",
-                        "on-surface": "#121c2c",
-                        "on-secondary-fixed": "#241a00",
-                        "on-tertiary-fixed": "#3f001b",
-                        "on-background": "#121c2c",
-                        "primary-container": "#4db6ac",
-                        "surface-container-lowest": "#ffffff",
-                        "on-tertiary-fixed-variant": "#8b0e45",
-                        "error": "#ba1a1a",
-                        "primary": "#006a63",
-                        "on-error-container": "#93000a",
-                        "on-secondary-fixed-variant": "#574500",
-                        "surface-tint": "#006a63",
-                        "surface": "#f9f9ff",
-                        "surface-container": "#e7eeff",
-                        "surface-container-highest": "#d9e3f9",
-                        "tertiary": "#ab2c5d",
-                        "on-primary-fixed-variant": "#00504a",
-                        "surface-container-high": "#dee8ff",
-                        "primary-fixed-dim": "#71d7cd",
-                        "on-error": "#ffffff",
-                        "inverse-on-surface": "#ebf1ff",
-                        "inverse-primary": "#71d7cd",
-                        "outline": "#6d7a77",
-                        "outline-variant": "#bdc9c6",
-                        "on-tertiary": "#ffffff",
-                        "background": "#f9f9ff",
-                        "surface-dim": "#d0daf0",
-                        "tertiary-container": "#ff7ba5",
-                        "surface-container-low": "#f0f3ff",
-                        "secondary-fixed": "#ffe087",
-                        "primary-fixed": "#8ef4e9",
-                        "surface-variant": "#d9e3f9",
-                        "surface-bright": "#f9f9ff",
-                        "on-secondary": "#ffffff",
-                        "on-primary": "#ffffff",
-                        "tertiary-fixed": "#ffd9e1",
-                        "on-tertiary-container": "#7a003a",
-                        "on-primary-fixed": "#00201d",
-                        "tertiary-fixed-dim": "#ffb1c5",
-                        "on-secondary-container": "#725b00",
-                        "inverse-surface": "#273141",
-                        "secondary": "#735c00",
-                        "on-surface-variant": "#3d4947",
-                        "secondary-container": "#fdd34d",
-                        "on-primary-container": "#00433f"
+                        neutral: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        trust: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        },
+                        nature: {
+                            50: '#e6f7f6',
+                            100: '#b3e8e5',
+                            400: '#4dd4cd',
+                            500: '#00a89e',
+                            600: '#008b83',
+                            700: '#006e68',
+                            800: '#00524d',
+                            900: '#003532',
+                        },
+                        accent: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        cream: '#fdfbf7',
+                        sand: '#f5f0eb',
+                        sage: '#8da399',
                     },
                     fontFamily: {
-                        "headline": ["Plus Jakarta Sans"],
-                        "body": ["Manrope"],
-                        "label": ["Manrope"]
+                        display: ['system-ui', '-apple-system', 'sans-serif'],
+                        body: ['system-ui', '-apple-system', 'sans-serif'],
                     },
-                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                    },
                 },
             },
         }
     </script>
+
     <style>
-        .glass-nav {
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+        :root {
+            --color-neutral: #fafaf9;
+            --color-neutral-dark: #1c1917;
+            --color-trust: #0ea5e9;
+            --color-nature: #00a89e;
+            --color-accent: #f97316;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-neutral: #1c1917;
+                --color-neutral-dark: #fafaf9;
+            }
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F0F9F8 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.07;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::before {
+            width: 400px;
+            height: 400px;
+            background: #00a89e;
+            top: -100px;
+            right: -100px;
+            animation: floatOrb 15s ease-in-out infinite;
+        }
+
+        body::after {
+            width: 350px;
+            height: 350px;
+            background: #00a89e;
+            bottom: -50px;
+            left: -50px;
+            animation: floatOrb 18s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatOrb {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
             }
 
             50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
+                transform: translate(60px, 60px);
             }
         }
 
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        @media (max-width: 640px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        ::selection {
+            background-color: rgba(14, 165, 233, 0.2);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Hover Effects */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 168, 158, 0.15);
+        }
+
+        /* WhatsApp Floating Button Pulse */
+        .whatsapp-float {
+            animation: whatsappPulse 5s ease-in-out infinite;
+        }
+
+        @keyframes whatsappPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 20px rgba(0, 168, 158, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 4px 30px rgba(0, 168, 158, 0.6);
+            }
+        }
+
+        .whatsapp-float:hover {
+            animation: none;
         }
     </style>
 </head>
 
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container/30">
-    <!-- TopAppBar Shell -->
-    <nav class="fixed top-0 w-full z-50 bg-white/60 dark:bg-slate-900/60 glass-nav shadow-sm">
-        <div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4 w-full">
-            <div class="flex items-center gap-3">
-                <img src="assets/logo.png?v=2026.1" alt="Logo Crezcamos Juntos"
-                    class="w-10 h-10 rounded-full shadow-sm hover:scale-110 transition-transform object-cover">
-                <div class="text-2xl font-bold text-teal-800 dark:text-teal-200 tracking-tighter font-headline">
-                    Crezcamos Juntos
+<body class="bg-neutral-50 text-stone-800 antialiased">
+    <!-- Navegación minimalista -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm dark:bg-stone-900/95 dark:border-stone-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="assets/logo.png?v=2026.1" alt="Logo Crezcamos Juntos"
+                        class="w-10 h-10 rounded-full shadow-sm hover:scale-110 transition-transform object-cover">
+                    <span class="font-semibold text-lg tracking-tight hidden sm:block">Crezcamos Juntos</span>
+                </a>
+
+                <!-- Links de navegación -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#quienes"
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Nosotros</a>
+                    <a href="#servicios"
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Servicios</a>
+                    <a href="#testimonios"
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Testimonios</a>
+                    <a href="#contacto"
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Contacto</a>
                 </div>
+
+                <!-- CTA Principal -->
+                <a href="#contacto"
+                    class="hidden md:inline-flex bg-[#00a89e] text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-[#008b83] transition-all hover:shadow-lg hover:-translate-y-0.5">
+                    Agendar Cita
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2 text-stone-600 hover:text-nature-600 transition-colors"
+                    aria-label="Abrir menú">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
             </div>
-            <div class="hidden md:flex items-center gap-8">
-                <a class="font-plus-jakarta-sans text-sm font-semibold tracking-tight text-teal-600 dark:text-teal-300 border-b-2 border-teal-500 pb-1 transition-opacity duration-200 hover:opacity-80"
-                    href="#quienes-somos">Quiénes Somos</a>
-                <a class="font-plus-jakarta-sans text-sm font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-teal-700 transition-opacity duration-200"
-                    href="#diferencial">Nuestro Diferencial</a>
-                <a class="font-plus-jakarta-sans text-sm font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-teal-700 transition-opacity duration-200"
-                    href="#metodologia">Metodología</a>
-                <a class="font-plus-jakarta-sans text-sm font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-teal-700 transition-opacity duration-200"
-                    href="#experiencias">Experiencias</a>
-                <a class="font-plus-jakarta-sans text-sm font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-teal-700 transition-opacity duration-200"
-                    href="#ubicacion">Ubicación</a>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40">
+            <div class="absolute inset-0 bg-stone-900/50 backdrop-blur-sm" id="mobile-menu-overlay"></div>
+            <div class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-stone-900 shadow-xl p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="font-bold text-lg">Menú</span>
+                    <button id="mobile-menu-close" class="p-2 text-stone-600 hover:text-stone-900">
+                        <i class="ph ph-x text-2xl"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col gap-4">
+                    <a href="#quienes"
+                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Nosotros</a>
+                    <a href="#servicios"
+                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Servicios</a>
+                    <a href="#testimonios"
+                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Testimonios</a>
+                    <a href="#contacto"
+                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Contacto</a>
+                    <a href="#contacto"
+                        class="mt-4 bg-[#00a89e] text-white px-5 py-3 rounded-full font-semibold text-center hover:bg-[#008b83] transition-all mobile-menu-link">Agendar
+                        Cita</a>
+                </nav>
             </div>
         </div>
     </nav>
 
-    <main class="pt-24 overflow-x-hidden">
-        <!-- Hero Section -->
-        <section class="max-w-7xl mx-auto px-6 py-6 md:py-12 grid md:grid-cols-2 gap-12 items-center min-h-[70vh]">
-            <div class="space-y-8 animate-fade-in">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full">
-                    <i class="ph ph-first-aid text-primary text-sm"></i>
-                    <span class="text-xs font-bold tracking-widest text-primary uppercase font-label">Centro de
-                        Rehabilitación Pediátrica</span>
-                </div>
-                <h1
-                    class="text-4xl md:text-6xl font-extrabold font-headline leading-[1.1] tracking-tight text-on-surface">
-                    Especialistas en el <span class="text-primary italic">desarrollo</span> infantil integral.
-                </h1>
-                <p class="text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-lg">
-                    Brindamos terapia ocupacional clínica de alta especialidad para niños y adolescentes, centrada en la
-                    autonomía y el bienestar familiar.
-                </p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="https://wa.me/56988805733?text=Hola,%20quiero%20agendar%20una%20sesión" target="_blank"
-                        class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl text-lg font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center gap-3">
-                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                        </svg>
-                        Agendar Sesión
-                    </a>
-                    <a href="#metodologia"
-                        class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-xl text-lg font-bold hover:bg-surface-container-high transition-all">
-                        Ver Servicios
-                    </a>
-                </div>
+    <main class="pt-16 lg:pt-20">
+        <!-- Hero Section - Mobile First -->
+        <section class="relative min-h-[85vh] flex items-center overflow-hidden">
+            <!-- Fondo orgánico sutil -->
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-neutral-50 via-cream to-sand dark:from-stone-900 dark:via-stone-800 dark:to-stone-900">
             </div>
-            <div class="relative">
-                <div
-                    class="absolute -top-6 -left-6 w-32 h-32 bg-secondary-container rounded-full blur-3xl opacity-40 float-animation">
-                </div>
-                <div
-                    class="absolute -bottom-10 -right-10 w-64 h-64 bg-primary-fixed-dim rounded-full blur-[100px] opacity-30 float-animation-delayed">
-                </div>
-                <div
-                    class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl transform rotate-1 md:rotate-2 hover:rotate-0 transition-transform duration-500">
-                    <img alt="Centro de rehabilitación pediátrica" class="w-full h-full object-cover"
-                        src="assets/hero-image.jpg?v=2026.1" />
+            <div class="absolute top-20 -right-20 w-96 h-96 bg-nature-400/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-nature-500/10 rounded-full blur-3xl"></div>
+
+            <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <!-- Contenido textual -->
+                    <div class="space-y-6 lg:space-y-8 animate-fade-in">
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-nature-500/10 dark:bg-nature-400/10 rounded-full border border-nature-500/20 backdrop-blur-sm">
+                            <i class="ph-duotone ph-heartbeat text-nature-600 dark:text-nature-400 text-sm"></i>
+                            <span
+                                class="text-xs font-bold text-nature-700 dark:text-nature-300 uppercase tracking-widest">Centro
+                                de Rehabilitación</span>
+                        </div>
+
+                        <!-- Headline Jerárquico -->
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance">
+                            Especialistas en
+                            <span class="text-nature-600">desarrollo</span>
+                            infantil integral
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-stone-600 dark:text-stone-300 leading-relaxed max-w-xl">
+                            Brindamos terapia ocupacional clínica de alta especialidad para niños y adolescentes,
+                            centrada en la autonomía y el bienestar familiar.
+                        </p>
+
+                        <!-- CTAs -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <a href="https://wa.me/56988805733?text=Hola,%20quiero%20agendar%20una%20sesión"
+                                class="inline-flex items-center justify-center gap-2 bg-[#00a89e] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#008b83] transition-all hover:shadow-xl hover:-translate-y-1 text-center">
+                                <i class="ph ph-whatsapp-logo text-xl"></i>
+                                Agendar Sesión
+                            </a>
+                            <a href="#servicios"
+                                class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold border-2 border-stone-200 dark:border-stone-700 hover:border-nature-500 hover:text-nature-600 transition-all text-center">
+                                Ver Servicios
+                            </a>
+                        </div>
+
+                        <!-- Stats minimalistas -->
+                        <div class="flex gap-8 pt-4 text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-2xl text-nature-600">100+</span>
+                                <span class="text-stone-500">familias</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-2xl text-nature-500">8+</span>
+                                <span class="text-stone-500">años exp.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Imagen decorativa -->
+                    <div class="relative animate-slide-up">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="assets/hero-image.jpg?v=2026.1" alt="Centro de rehabilitación pediátrica"
+                                class="w-full h-auto object-cover" loading="eager" />
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Quiénes Somos Section -->
-        <section class="bg-surface-container-low py-24 mt-20" id="quienes-somos">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-20 items-start">
+        <!-- Quiénes Somos - minimalista -->
+        <section id="quienes" class="py-20 lg:py-32 bg-white dark:bg-stone-900 reveal">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+                    <!-- Texto principal -->
                     <div class="space-y-6">
-                        <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight">Compromiso con
-                            la Transformación Infantil</h2>
-                        <div class="w-20 h-1.5 bg-primary rounded-full"></div>
-                        <p class="text-lg text-on-surface-variant leading-relaxed">
-                            En <span class="font-bold text-primary">Crezcamos Juntos</span>, entendemos que cada niño
-                            tiene un ritmo y potencial único. Nuestra clínica nace de la necesidad de ofrecer un espacio
-                            de rehabilitación que combine el rigor científico con un entorno acogedor y seguro.
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                            Compromiso con la
+                            <span class="text-nature-600">transformación</span> infantil
+                        </h2>
+                        <div class="w-16 h-1 bg-accent-500 rounded-full"></div>
+                        <p class="text-lg text-stone-600 dark:text-stone-300 leading-relaxed">
+                            En <strong class="text-stone-800 dark:text-stone-100">Crezcamos Juntos</strong>, entendemos
+                            que cada niño tiene un ritmo y potencial único. Nuestra clínica nace de la necesidad de
+                            ofrecer un espacio de rehabilitación que combine el rigor científico con un entorno acogedor
+                            y seguro.
                         </p>
-                        <p class="text-lg text-on-surface-variant leading-relaxed">
+                        <p class="text-lg text-stone-600 dark:text-stone-300 leading-relaxed">
                             Liderados por un equipo interdisciplinario de expertos en terapia ocupacional, nos
                             especializamos en trastornos del neurodesarrollo, integración sensorial y dificultades del
                             aprendizaje.
                         </p>
                     </div>
-                    <div class="grid grid-cols-2 gap-6">
+
+                    <!-- Cards de características -->
+                    <div class="grid grid-cols-2 gap-4">
                         <div
-                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm space-y-4 hover:shadow-md transition-shadow">
-                            <i class="ph ph-users text-4xl text-primary"></i>
-                            <h3 class="font-bold font-headline text-xl">Equipo Experto</h3>
-                            <p class="text-sm text-on-surface-variant">Profesionales certificados con formación continua
-                                en pedagogía y rehabilitación.</p>
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            <div
+                                class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="ph-duotone ph-users text-nature-600 text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Equipo Expertos</h3>
+                            <p class="text-sm text-stone-500">Profesionales certificados con formación continua</p>
                         </div>
                         <div
-                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm space-y-4 translate-y-8 hover:shadow-md transition-shadow">
-                            <i class="ph ph-house-heart text-4xl text-tertiary"></i>
-                            <h3 class="font-bold font-headline text-xl">Foco Familiar</h3>
-                            <p class="text-sm text-on-surface-variant">Involucramos activamente a los padres en cada
-                                etapa del proceso terapéutico.</p>
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            <div
+                                class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="ph-duotone ph-house-line text-nature-600 text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Enfoque Familiar</h3>
+                            <p class="text-sm text-stone-500">Involucramos a los padres en cada etapa</p>
                         </div>
                         <div
-                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm space-y-4 hover:shadow-md transition-shadow">
-                            <i class="ph ph-brain text-4xl text-secondary"></i>
-                            <h3 class="font-bold font-headline text-xl">Visión Integral</h3>
-                            <p class="text-sm text-on-surface-variant">Abordamos el desarrollo cognitivo, motor y
-                                emocional del infante.</p>
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            <div
+                                class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="ph-duotone ph-brain text-nature-600 text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Visión Integral</h3>
+                            <p class="text-sm text-stone-500">Abordamos desarrollo cognitivo, motor y emocional</p>
                         </div>
                         <div
-                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm space-y-4 translate-y-8 hover:shadow-md transition-shadow">
-                            <i class="ph ph-heartbeat text-4xl text-primary-container"></i>
-                            <h3 class="font-bold font-headline text-xl">Resultados</h3>
-                            <p class="text-sm text-on-surface-variant">Metodologías validadas que aseguran el progreso
-                                real y sostenible.</p>
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            <div
+                                class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="ph-duotone ph-chart-line-up text-nature-600 text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Resultados</h3>
+                            <p class="text-sm text-stone-500">Metodologías validadas para progreso sostenible</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Nuestro Diferencial Section -->
-        <section class="py-24 bg-surface-container-highest/30 relative overflow-hidden" id="diferencial">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 rounded-full blur-[100px] -z-10"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary-container/10 rounded-full blur-[100px] -z-10">
-            </div>
-
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-16 space-y-4">
-                    <span class="text-primary font-bold tracking-widest text-xs uppercase font-label block">¿Qué nos
+        <!-- Diferencial -->
+        <section class="py-20 lg:py-32 bg-neutral-50 dark:bg-stone-800 reveal">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 space-y-4">
+                    <span class="text-sm font-semibold text-nature-600 uppercase tracking-widest">¿Qué nos
                         diferencia?</span>
-                    <h2 class="text-3xl md:text-5xl font-black font-headline text-on-surface leading-tight">
-                        Atención personalizada, interdisciplinaria y <span class="italic text-primary">centrada en la
-                            familia</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                        Atención <span class="text-nature-600">personalizada</span> y centrada en la familia
                     </h2>
                 </div>
 
-                <div class="grid md:grid-cols-5 gap-8 items-center">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
                     <div
-                        class="md:col-span-3 space-y-8 p-10 bg-white/60 backdrop-blur-md rounded-[2.5rem] shadow-sm border border-outline-variant/10">
-                        <div class="space-y-6 text-xl text-on-surface-variant leading-relaxed">
-                            <p>
-                                En <span class="font-bold text-on-surface">Centro Crezcamos Juntos</span> consideramos
-                                no solo el diagnóstico, sino también el <span
-                                    class="text-primary font-semibold">contexto real</span> en que cada niño vive,
-                                aprende y se relaciona.
-                            </p>
-                            <p>
-                                Nuestro trabajo busca que los avances terapéuticos sean <span
-                                    class="underline decoration-secondary decoration-2 underline-offset-4">funcionales,
-                                    significativos y transferibles</span> a la casa, al colegio y a la comunidad.
-                            </p>
-                        </div>
+                        class="group bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-stone-100 dark:border-stone-800">
                         <div
-                            class="flex items-center gap-6 p-6 bg-surface-container-low rounded-2xl border-l-4 border-primary">
-                            <i class="ph ph-house-heart text-4xl text-primary"></i>
-                            <p class="font-bold text-on-surface leading-tight">
-                                Intervenimos más allá de la sesión: acompañamos al niño en función de su vida real y
-                                contextos cotidianos.
-                            </p>
+                            class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-nature-800/50 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                            <i class="ph-duotone ph-heartbeat text-nature-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3">Más que terapia</h3>
+                        <p class="text-stone-600 dark:text-stone-300">Intervenimos más allá de la sesión: acompañamos al
+                            niño en función de su vida real y contextos cotidianos.</p>
                     </div>
 
+                    <!-- Card 2 -->
                     <div
-                        class="md:col-span-2 bg-primary text-on-primary p-12 rounded-[2.5rem] shadow-2xl relative group overflow-hidden">
+                        class="group bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-stone-100 dark:border-stone-800">
                         <div
-                            class="absolute -top-12 -right-12 w-32 h-32 bg-secondary-container/20 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700">
+                            class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-nature-800/50 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                            <i class="ph-duotone ph-users-three text-nature-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3">Enfoque interdisciplinario</h3>
+                        <p class="text-stone-600 dark:text-stone-300">Consideramos no solo el diagnóstico, sino también
+                            el contexto real en que cada niño vive, aprende y se relaciona.</p>
+                    </div>
 
-                        <div class="relative space-y-8">
-                            <i class="ph ph-brain text-5xl text-secondary-container"></i>
-                            <h3 class="text-2xl font-bold font-headline leading-snug">
-                                "No trabajamos solo una dificultad, trabajamos su participación en la vida diaria."
-                            </h3>
-                            <ul class="space-y-4 text-primary-fixed/90">
-                                <li class="flex items-center gap-3">
-                                    <i class="ph ph-check-circle text-secondary-container text-sm"></i>
-                                    <span>Regulación y Comunicación</span>
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <i class="ph ph-check-circle text-secondary-container text-sm"></i>
-                                    <span>Conducta y Vínculo Familiar</span>
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <i class="ph ph-check-circle text-secondary-container text-sm"></i>
-                                    <span>Desempeño en sus entornos</span>
-                                </li>
-                            </ul>
+                    <!-- Card 3 -->
+                    <div
+                        class="group bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-stone-100 dark:border-stone-800">
+                        <div
+                            class="w-14 h-14 bg-accent-500/10 dark:bg-accent-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                            <i class="ph-duotone ph-target text-accent-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3">Resultados medibles</h3>
+                        <p class="text-stone-600 dark:text-stone-300">Los avances terapéuticos son funcionales,
+                            significativos y transferibles a la casa, al colegio y a la comunidad.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Metodología Section -->
-        <section class="py-24 max-w-7xl mx-auto px-6 overflow-hidden" id="metodologia">
-            <div class="text-center mb-20">
-                <span class="text-primary font-bold tracking-widest text-xs uppercase font-label block mb-4">Nuestro
-                    Proceso</span>
-                <h2 class="text-4xl md:text-5xl font-black font-headline text-on-surface">La Ruta del Crecimiento</h2>
-            </div>
-            <div class="relative">
-                <!-- Decorative Connector Line -->
-                <div class="absolute top-1/2 left-0 w-full h-px bg-outline-variant/30 hidden md:block -z-10"></div>
-                <div class="grid md:grid-cols-3 gap-12">
+        <!-- Servicios / Metodología -->
+        <section id="servicios" class="py-20 lg:py-32 bg-white dark:bg-stone-900 reveal">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-sm font-semibold text-nature-600 uppercase tracking-widest">Nuestro Proceso</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">La Ruta del Crecimiento
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
                     <!-- Step 1 -->
-                    <div
-                        class="bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col items-center text-center">
+                    <div class="relative group">
                         <div
-                            class="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center mb-8 ring-8 ring-primary-fixed/20">
-                            <span class="text-2xl font-black text-on-primary-fixed font-headline">01</span>
+                            class="bg-neutral-50 dark:bg-stone-800/50 p-8 rounded-3xl h-full border border-transparent hover:border-nature-100 transition-all hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <div
+                                    class="w-12 h-12 bg-nature-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                                    01</div>
+                                <i
+                                    class="ph-duotone ph-clipboard-text text-nature-600 text-3xl opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Evaluación Inicial</h3>
+                            <p class="text-stone-600 dark:text-stone-300">Realizamos un diagnóstico exhaustivo de las
+                                capacidades sensoriales, motoras y cognitivas.</p>
                         </div>
-                        <h3 class="text-2xl font-bold font-headline mb-4">Evaluación Inicial</h3>
-                        <p class="text-on-surface-variant leading-relaxed">
-                            Realizamos un diagnóstico exhaustivo de las capacidades sensoriales, motoras y cognitivas
-                            para identificar áreas de oportunidad específicas.
-                        </p>
+                        <!-- Connector -->
+                        <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-stone-200"></div>
                     </div>
+
                     <!-- Step 2 -->
-                    <div
-                        class="bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col items-center text-center">
+                    <div class="relative group">
                         <div
-                            class="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center mb-8 ring-8 ring-secondary-container/20">
-                            <span class="text-2xl font-black text-on-secondary-container font-headline">02</span>
+                            class="bg-neutral-50 dark:bg-stone-800/50 p-8 rounded-3xl h-full border border-transparent hover:border-nature-100 transition-all hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <div
+                                    class="w-12 h-12 bg-nature-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                                    02</div>
+                                <i
+                                    class="ph-duotone ph-strategy text-nature-600 text-3xl opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Plan Personalizado</h3>
+                            <p class="text-stone-600 dark:text-stone-300">Diseñamos una estrategia terapéutica a medida,
+                                estableciendo objetivos claros con la familia.</p>
                         </div>
-                        <h3 class="text-2xl font-bold font-headline mb-4">Plan Personalizado</h3>
-                        <p class="text-on-surface-variant leading-relaxed">
-                            Diseñamos una estrategia terapéutica a medida, estableciendo objetivos claros y alcanzables
-                            junto a la familia.
-                        </p>
+                        <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-stone-200"></div>
                     </div>
+
                     <!-- Step 3 -->
-                    <div
-                        class="bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col items-center text-center">
+                    <div class="relative group">
                         <div
-                            class="w-16 h-16 bg-tertiary-container rounded-full flex items-center justify-center mb-8 ring-8 ring-tertiary-container/20">
-                            <span class="text-2xl font-black text-on-tertiary-container font-headline">03</span>
+                            class="bg-neutral-50 dark:bg-stone-800/50 p-8 rounded-3xl h-full border border-transparent hover:border-nature-100 transition-all hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <div
+                                    class="w-12 h-12 bg-accent-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                                    03</div>
+                                <i
+                                    class="ph-duotone ph-users-three text-accent-600 text-3xl opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Acompañamiento</h3>
+                            <p class="text-stone-600 dark:text-stone-300">Ejecutamos sesiones dinámicas y entregamos
+                                herramientas para el hogar.</p>
                         </div>
-                        <h3 class="text-2xl font-bold font-headline mb-4">Acompañamiento</h3>
-                        <p class="text-on-surface-variant leading-relaxed">
-                            Ejecutamos sesiones dinámicas y entregamos herramientas para el hogar, garantizando que el
-                            progreso se traslade al día a día.
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experiencias (Testimonials) -->
-        <section class="bg-on-surface text-surface py-24 md:rounded-3xl mx-0 md:mx-6" id="experiencias">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                    <div class="max-w-xl">
-                        <h2 class="text-4xl md:text-5xl font-black font-headline mb-6">Confianza que genera bienestar
-                        </h2>
-                        <p class="text-surface-dim text-lg mb-4">Más de 200 familias han confiado el desarrollo de sus
-                            hijos en nuestras manos expertas.</p>
-                        <a href="https://www.doctoralia.cl/reinaldo-perez-soto/terapeuta-ocupacional/rancagua"
-                            target="_blank"
-                            class="text-primary-fixed-dim text-sm hover:underline flex items-center gap-2">
-                            Ver más en Doctoralia
-                            <i class="ph ph-arrow-square-out text-xs"></i>
+        <!-- Testimonios -->
+        <section id="testimonios" class="py-20 lg:py-32 bg-stone-800 text-white reveal">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-sm font-semibold text-nature-400 uppercase tracking-widest">Testimonios</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">Confianza que genera
+                        <span class="text-nature-400">bienestar</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonio 1 -->
+                    <div class="bg-stone-700/50 p-8 rounded-3xl card-hover">
+                        <div class="flex gap-1 text-accent-500 mb-4">
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                        </div>
+                        <p class="text-stone-200 mb-6 italic">"Reinaldo excelente profesional, instalación cómoda y
+                            acogedora, con mucha experiencia y disposedón para trabajar con el paciente sacando todo su
+                            potencial."</p>
+                        <div class="border-t border-stone-600 pt-4">
+                            <p class="font-bold">Jocelyn</p>
+                            <p class="text-sm text-stone-400">Madre de paciente</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="bg-stone-700/50 p-8 rounded-3xl card-hover">
+                        <div class="flex gap-1 text-accent-500 mb-4">
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                        </div>
+                        <p class="text-stone-200 mb-6 italic">"Los avances de mi hijo han sido muchos. Explica muy bien
+                            y tiene un trato cercano creando un vínculo casi instantáneo con los niños. Lo recomiendo
+                            100%."</p>
+                        <div class="border-t border-stone-600 pt-4">
+                            <p class="font-bold">Gabriela Velasquez</p>
+                            <p class="text-sm text-stone-400">Madre de paciente</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="bg-stone-700/50 p-8 rounded-3xl card-hover">
+                        <div class="flex gap-1 text-accent-500 mb-4">
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                            <i class="ph-fill ph-star text-sm"></i>
+                        </div>
+                        <p class="text-stone-200 mb-6 italic">"Excelente profesional, cercano y muy claro en sus
+                            explicaciones. En corto plazo hemos experimentado muchos resultados positivos. Recomendado
+                            absolutamente."</p>
+                        <div class="border-t border-stone-600 pt-4">
+                            <p class="font-bold">Macarena</p>
+                            <p class="text-sm text-stone-400">Madre de paciente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doctoralia Link -->
+                <div class="text-center mt-12">
+                    <a href="https://www.doctoralia.cl/reinaldo-perez-soto/terapeuta-ocupacional/rancagua"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 text-nature-400 hover:text-nature-300 transition-colors text-sm font-medium">
+                        Ver más testimonios en Doctoralia
+                        <i class="ph ph-arrow-square-out"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto / Ubicación -->
+        <section id="contacto" class="py-20 lg:py-32 bg-neutral-50 dark:bg-stone-900 reveal">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+                    <!-- Información de contacto -->
+                    <div class="space-y-8">
+                        <div>
+                            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Estamos cerca de ti</h2>
+                            <p class="text-lg text-stone-600 dark:text-stone-300">Visítanos en nuestras instalaciones
+                                diseñadas específicamente para la comodidad y seguridad de los más pequeños.</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div
+                                class="group flex items-start gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-stone-800 transition-colors">
+                                <div
+                                    class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                                    <i class="ph-duotone ph-map-pin text-nature-600 text-2xl"></i>
+                                </div>
+                                <div class="pt-2">
+                                    <h4 class="font-bold text-stone-900 dark:text-stone-100">Dirección</h4>
+                                    <p class="text-stone-600 dark:text-stone-400">Michimalongo 212, Población San Luis,
+                                        Rancagua, Chile</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="group flex items-start gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-stone-800 transition-colors">
+                                <div
+                                    class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                                    <i class="ph-duotone ph-phone text-nature-600 text-2xl"></i>
+                                </div>
+                                <div class="pt-2">
+                                    <h4 class="font-bold text-stone-900 dark:text-stone-100">Teléfono</h4>
+                                    <p class="text-stone-600 dark:text-stone-400">+56 9 8880 5733</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="group flex items-start gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-stone-800 transition-colors">
+                                <div
+                                    class="w-14 h-14 bg-gradient-to-br from-accent-50 to-accent-100 dark:from-accent-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                                    <i class="ph-duotone ph-clock text-accent-600 text-2xl"></i>
+                                </div>
+                                <div class="pt-2">
+                                    <h4 class="font-bold text-stone-900 dark:text-stone-100">Horario</h4>
+                                    <p class="text-stone-600 dark:text-stone-400">Lun-Vie: 09:00 - 19:00 hrs<br>Sábados:
+                                        09:00 - 13:00 hrs</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="group flex items-start gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-stone-800 transition-colors">
+                                <div
+                                    class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                                    <i class="ph-duotone ph-envelope text-nature-600 text-2xl"></i>
+                                </div>
+                                <div class="pt-2">
+                                    <h4 class="font-bold text-stone-900 dark:text-stone-100">Email</h4>
+                                    <p class="text-stone-600 dark:text-stone-400">Reinaldoperez.to@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón CTA principal -->
+                        <a href="https://wa.me/56988805733?text=Hola,%20quiero%20agendar%20una%20sesión"
+                            class="inline-flex items-center gap-2 bg-[#00a89e] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#008b83] transition-all hover:shadow-xl hover:-translate-y-1">
+                            <i class="ph ph-whatsapp-logo text-xl"></i>
+                            Contactar ahora
                         </a>
                     </div>
-                    <div class="flex gap-4">
-                        <button
-                            class="p-4 rounded-full border border-surface-dim/30 hover:bg-surface-dim/10 transition-colors">
-                            <i class="ph ph-caret-left"></i>
-                        </button>
-                        <button
-                            class="p-4 rounded-full border border-surface-dim/30 hover:bg-surface-dim/10 transition-colors">
-                            <i class="ph ph-caret-right"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Testimonio 1: Jocelyn -->
-                    <div
-                        class="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 relative overflow-hidden group flex flex-col">
-                        <i
-                            class="ph ph-quotes text-7xl absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform"></i>
 
-                        <div class="flex gap-1 text-secondary-container mb-6">
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                        </div>
-
-                        <p class="text-sm leading-relaxed italic text-surface-bright/90 mb-8">
-                            "Reinaldo excelente profesional, instalación cómoda y acogedora, él un terapeuta con mucha
-                            experiencia y ademas una persona muy cordial, cálido y con mucha disposición para trabajar
-                            con el paciente sacando todo su potencial."
-                        </p>
-
-                        <div class="mt-auto pt-4 border-t border-white/10">
-                            <div class="font-bold text-lg font-headline text-surface">Jocelyn</div>
-                            <div class="text-primary-fixed-dim text-[10px] uppercase tracking-wider font-label">Padres
-                                de Fernando R.</div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonio 2: Gabriela Velasquez -->
-                    <div
-                        class="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 relative overflow-hidden group flex flex-col">
-                        <i
-                            class="ph ph-quotes text-7xl absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform"></i>
-
-                        <div class="flex gap-1 text-secondary-container mb-6">
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                        </div>
-
-                        <p class="text-sm leading-relaxed italic text-surface-bright/90 mb-8">
-                            "Los avances que ha tenido mí hijo gracias a Reinaldo han sido demasiados, he aprendido
-                            mucho en las sesiones, explica muy bien y tiene un trato cercano creando un vínculo casi
-                            instantáneo con los niños. Lo recomiendo 100% lejos el mejor profesional."
-                        </p>
-
-                        <div class="mt-auto pt-4 border-t border-white/10">
-                            <div class="font-bold text-lg font-headline text-surface">Gabriela Velasquez</div>
-                            <div class="text-primary-fixed-dim text-[10px] uppercase tracking-wider font-label">Enfoque
-                                Terapeuta Pediátrico</div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonio 3: Macarena -->
-                    <div
-                        class="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 relative overflow-hidden group flex flex-col">
-                        <i
-                            class="ph ph-quotes text-7xl absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform"></i>
-
-                        <div class="flex gap-1 text-secondary-container mb-6">
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                            <i class="ph ph-star-fill text-xs"></i>
-                        </div>
-
-                        <p class="text-sm leading-relaxed italic text-surface-bright/90 mb-8">
-                            "Excelente profesional, cercano y muy claro en sus explicaciones, en corto plazo hemos
-                            experimentado muchos resultados positivos con mi hijo, recomendado absolutamente."
-                        </p>
-
-                        <div class="mt-auto pt-4 border-t border-white/10">
-                            <div class="font-bold text-lg font-headline text-surface">Macarena</div>
-                            <div class="text-primary-fixed-dim text-[10px] uppercase tracking-wider font-label">
-                                Evaluación Integral</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dónde Encontrarnos (Location) -->
-        <section class="py-24 max-w-7xl mx-auto px-6" id="ubicacion">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-10">
-                    <div>
-                        <h2 class="text-4xl font-extrabold font-headline text-on-surface mb-4">Estamos cerca de ti</h2>
-                        <p class="text-on-surface-variant text-lg">Visítanos en nuestras instalaciones diseñadas
-                            específicamente para la comodidad y seguridad de los más pequeños.</p>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="flex gap-6 items-start">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center flex-shrink-0">
-                                <i class="ph ph-map-pin text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-headline text-xl mb-1">Dirección</h4>
-                                <p class="text-on-surface-variant">Michimalongo 212, población San Luis, Rancagua, Chile
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 items-start">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center flex-shrink-0">
-                                <i class="ph ph-phone text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-headline text-xl mb-1">Teléfonos de Contacto</h4>
-                                <p class="text-on-surface-variant">+56 9 8880 5733</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 items-start">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center flex-shrink-0">
-                                <i class="ph ph-clock text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-headline text-xl mb-1">Horario de Atención</h4>
-                                <p class="text-on-surface-variant">Lunes a Viernes: 09:00 - 19:00 hrs<br />Sábados:
-                                    09:00 - 13:00 hrs</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 items-start">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center flex-shrink-0">
-                                <i class="ph ph-envelope text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-headline text-xl mb-1">Correo Electrónico</h4>
-                                <p class="text-on-surface-variant leading-relaxed">Reinaldoperez.to@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button
-                        class="w-full md:w-auto bg-primary text-on-primary px-10 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-lg">
-                        <i class="ph ph-map-trifold"></i>
-                        Cómo Llegar
-                    </button>
-                </div>
-                <div class="relative group">
-                    <div
-                        class="absolute -inset-4 bg-primary-container/20 rounded-3xl blur-2xl group-hover:bg-primary-container/30 transition-colors">
-                    </div>
-                    <div
-                        class="relative bg-surface-container-highest rounded-2xl overflow-hidden h-[500px] shadow-xl border border-outline-variant/20">
-                        <div class="w-full h-full bg-slate-200">
+                    <!-- Mapa -->
+                    <div class="relative">
+                        <div class="bg-stone-200 dark:bg-stone-800 rounded-3xl overflow-hidden h-[400px]">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.90561571216!2d-70.7420542!3d-34.1673859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663437145e69e8b%3A0xc3f60f6479a8e98!2sMichimalongo%20212%2C%20Rancagua%2C%20O&#39;Higgins!5e0!3m2!1ses-419!2scl!4v1711000000000!5m2!1ses-419!2scl"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.90561571216!2d-70.7420542!3d-34.1673859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663437145e69e8b%3A0xc3f60f6479a8e98!2sMichimalongo%20212%2C%20Rancagua%2C%20O'Higgins!5e0!3m2!1ses-419!2scl!4v1711000000000!5m2!1ses-419!2scl"
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"
-                                class="grayscale hover:grayscale-0 transition-all duration-700">
+                                class="grayscale hover:grayscale-0 transition-all duration-500">
                             </iframe>
                         </div>
                     </div>
@@ -543,82 +710,116 @@
         </section>
     </main>
 
-    <!-- Footer Shell -->
-    <footer class="w-full rounded-t-[3rem] mt-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8 py-16">
-            <div class="space-y-6">
-                <div class="flex items-center gap-4">
-                    <img src="assets/logo.png?v=2026.1" alt="Logo"
-                        class="w-16 h-16 rounded-full grayscale hover:grayscale-0 transition-all object-cover">
-                    <div
-                        class="text-2xl font-black text-teal-900 dark:text-teal-100 font-headline uppercase tracking-tighter">
-                        Crezcamos Juntos</div>
-                </div>
-                <p class="font-plus-jakarta-sans text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-                    Especialistas en Terapia Pediátrica. Nuestra misión es potenciar las habilidades de niños y
-                    adolescentes en un entorno de excelencia clínica.
-                </p>
-            </div>
-            <div class="space-y-6">
-                <div class="text-teal-800 dark:text-teal-300 font-bold font-headline">Navegación</div>
-                <ul class="space-y-4">
-                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm"
-                            href="#quienes-somos">Quiénes Somos</a></li>
-                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm"
-                            href="#diferencial">Nuestro Diferencial</a></li>
-                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm"
-                            href="#metodologia">Metodología</a></li>
-                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm"
-                            href="#experiencias">Experiencias</a></li>
-                </ul>
-            </div>
-            <div class="space-y-6">
-                <div class="text-teal-800 dark:text-teal-300 font-bold font-headline">Redes y Reservas</div>
-                <div class="flex flex-col gap-4">
-                    <a href="https://wa.me/56988805733?text=Hola,%20quiero%20agendar%20una%20sesión" target="_blank"
-                        class="inline-flex items-center gap-3 text-slate-500 hover:text-primary transition-colors">
-                        <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                        </svg>
-                        Contacto WhatsApp
-                    </a>
-                    <a href="mailto:Reinaldoperez.to@gmail.com"
-                        class="inline-flex items-center gap-3 text-slate-500 hover:text-primary transition-colors text-sm">
-                        <i class="ph ph-envelope text-primary text-lg"></i>
-                        Reinaldoperez.to@gmail.com
-                    </a>
-                    <div class="flex gap-4">
-                        <a class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary/10 transition-colors border border-slate-100"
-                            href="#">
-                            <i class="ph ph-share-network text-teal-700"></i>
+    <!-- Footer minimalista -->
+    <footer class="bg-stone-900 text-stone-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/logo.png?v=2026.1" alt="Logo"
+                            class="w-10 h-10 rounded-full shadow-sm hover:opacity-80 transition-opacity object-cover">
+                        <span class="font-semibold text-white text-lg">Crezcamos Juntos</span>
+                    </div>
+                    <p class="text-sm">Especialistas en Terapia Pediátrica. Potenciando las habilidades de niños y
+                        adolescentes en un entorno de excelencia clínica.</p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://www.instagram.com/crezcamosjuntosrgua/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-nature-500 transition-all hover:scale-110 shadow-sm"
+                            aria-label="Instagram">
+                            <i class="ph ph-instagram-logo text-white text-xl"></i>
                         </a>
-                        <a class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary/10 transition-colors border border-slate-100"
-                            href="#">
-                            <i class="ph ph-camera text-teal-700"></i>
+                        <a href="https://wa.me/56988805733" target="_blank"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-[#25D366] transition-all hover:scale-110 shadow-sm"
+                            aria-label="WhatsApp">
+                            <i class="ph ph-whatsapp-logo text-white text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Navegación</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#quienes" class="hover:text-white transition-colors">Nosotros</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="#testimonios" class="hover:text-white transition-colors">Testimonios</a></li>
+                        <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contacto</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="https://wa.me/56988805733"
+                            class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="ph ph-whatsapp-logo"></i>
+                            +56 9 8880 5733
+                        </a>
+                        <a href="mailto:Reinaldoperez.to@gmail.com"
+                            class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="ph ph-envelope"></i>
+                            Reinaldoperez.to@gmail.com
+                        </a>
+                        <a href="https://www.instagram.com/crezcamosjuntosrgua/" target="_blank"
+                            class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="ph ph-instagram-logo"></i>
+                            @crezcamosjuntosrgua
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-8 pb-12">
-            <div
-                class="pt-8 border-t border-slate-200/50 dark:border-slate-800/50 text-center text-slate-500 dark:text-slate-400 text-xs">
-                © 2024 Crezcamos Juntos. Especialistas en Terapia Pediátrica. Todos los derechos reservados.
+
+            <div class="border-t border-stone-800 pt-8 text-sm text-center">
+                <p>© 2024 Crezcamos Juntos. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Action Button (WhatsApp) -->
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn?.addEventListener('click', openMobileMenu);
+        mobileMenuClose?.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
+        mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+
+    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/56988805733?text=Hola,%20quiero%20agendar%20una%20sesión" target="_blank"
-        class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-2xl shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center gap-3 group">
-        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-        </svg>
-        <span
-            class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold whitespace-nowrap">Agendar
-            Sesión</span>
+        class="fixed bottom-6 right-6 z-50 bg-[#00a89e] text-white p-4 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all flex items-center justify-center whatsapp-float"
+        aria-label="Contactar por WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
     </a>
 </body>
 
