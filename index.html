@@ -12,6 +12,9 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -62,7 +65,7 @@
                         sage: '#8da399',
                     },
                     fontFamily: {
-                        display: ['system-ui', '-apple-system', 'sans-serif'],
+                        display: ['Quicksand', 'system-ui', 'sans-serif'],
                         body: ['system-ui', '-apple-system', 'sans-serif'],
                     },
                     animation: {
@@ -115,8 +118,10 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(180deg, #FFFFFF 0%, #F0F9F8 100%);
+            font-family: 'Quicksand', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fdfbf7;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300a89e' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
             position: relative;
             overflow-x: hidden;
         }
@@ -222,6 +227,34 @@
         .swiper-pagination-bullet-active {
             background: #00a89e !important;
         }
+
+        /* Nav Link Underline Animation */
+        .nav-link-animated {
+            position: relative;
+        }
+
+        .nav-link-animated::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #00a89e;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link-animated:hover::after {
+            width: 100%;
+        }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-600 { animation-delay: 600ms; }
     </style>
 </head>
 
@@ -230,30 +263,30 @@
     <nav
         class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm dark:bg-stone-900/95 dark:border-stone-800/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 lg:h-20">
+            <div class="flex items-center justify-between h-24 lg:h-28">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
                     <img src="assets/logo.png?v=2026.6" alt="Logo Crezcamos Juntos"
-                        class="w-11 h-11 rounded-full shadow-sm hover:scale-110 transition-transform object-cover"
+                        class="w-[88px] h-[88px] rounded-full shadow-sm hover:scale-110 transition-transform object-cover animate-scale-in"
                         style="clip-path: circle(40%);">
-                    <span class="font-semibold text-lg tracking-tight hidden sm:block">Crezcamos Juntos</span>
+                    <span class="font-semibold text-lg tracking-tight hidden sm:block animate-fade-in delay-100">Crezcamos Juntos</span>
                 </a>
 
                 <!-- Links de navegación -->
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#quienes"
-                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Nosotros</a>
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors nav-link-animated animate-fade-in delay-200">Nosotros</a>
                     <a href="#servicios"
-                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Servicios</a>
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors nav-link-animated animate-fade-in delay-300">Servicios</a>
                     <a href="#testimonios"
-                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Testimonios</a>
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors nav-link-animated animate-fade-in delay-400">Testimonios</a>
                     <a href="#contacto"
-                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors">Contacto</a>
+                        class="text-sm font-medium text-stone-600 hover:text-nature-600 transition-colors nav-link-animated animate-fade-in delay-500">Contacto</a>
                 </div>
 
                 <!-- CTA Principal -->
                 <a href="#contacto"
-                    class="hidden md:inline-flex bg-[#00a89e] text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-[#008b83] transition-all hover:shadow-lg hover:-translate-y-0.5">
+                    class="hidden md:inline-flex bg-[#00a89e] text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-[#008b83] transition-all hover:shadow-lg hover:-translate-y-0.5 animate-scale-in delay-600">
                     Agendar Cita
                 </a>
 
@@ -293,7 +326,7 @@
         </div>
     </nav>
 
-    <main class="pt-16 lg:pt-20">
+    <main class="pt-24 lg:pt-28">
         <!-- Hero Section - Mobile First -->
         <section class="relative min-h-[85vh] flex items-center overflow-hidden">
             <!-- Fondo orgánico sutil -->
@@ -317,7 +350,7 @@
 
                         <!-- Headline Jerárquico -->
                         <h1
-                            class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance">
+                            class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance">
                             Especialistas en
                             <span class="text-nature-600">desarrollo</span>
                             infantil integral
@@ -387,7 +420,7 @@
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
                     <!-- Texto principal -->
                     <div class="space-y-6">
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
                             Compromiso con la
                             <span class="text-nature-600">transformación</span> infantil
                         </h2>
@@ -413,7 +446,7 @@
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-users text-nature-600 text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-lg">Equipo Expertos</h3>
+                            <h3 class="font-display font-bold text-lg">Equipo Expertos</h3>
                             <p class="text-sm text-stone-500">Profesionales certificados con formación continua</p>
                         </div>
                         <div
@@ -422,7 +455,7 @@
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-house-line text-nature-600 text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-lg">Enfoque Familiar</h3>
+                            <h3 class="font-display font-bold text-lg">Enfoque Familiar</h3>
                             <p class="text-sm text-stone-500">Involucramos a los padres en cada etapa</p>
                         </div>
                         <div
@@ -431,7 +464,7 @@
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-brain text-nature-600 text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-lg">Visión Integral</h3>
+                            <h3 class="font-display font-bold text-lg">Visión Integral</h3>
                             <p class="text-sm text-stone-500">Abordamos desarrollo cognitivo, motor y emocional</p>
                         </div>
                         <div
@@ -440,7 +473,7 @@
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-chart-line-up text-nature-600 text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-lg">Resultados</h3>
+                            <h3 class="font-display font-bold text-lg">Resultados</h3>
                             <p class="text-sm text-stone-500">Metodologías validadas para progreso sostenible</p>
                         </div>
                     </div>
@@ -454,7 +487,7 @@
                 <div class="text-center mb-16 space-y-4">
                     <span class="text-sm font-semibold text-nature-600 uppercase tracking-widest">¿Qué nos
                         diferencia?</span>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
                         Atención <span class="text-nature-600">personalizada</span> y centrada en la familia
                     </h2>
                 </div>
@@ -462,36 +495,36 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Card 1 -->
                     <div
-                        class="group bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-stone-100 dark:border-stone-800">
+                        class="group bg-white/80 dark:bg-stone-900/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-white/50 dark:border-stone-700/50">
                         <div
                             class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-nature-800/50 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                             <i class="ph-duotone ph-heartbeat text-nature-600 text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Más que terapia</h3>
+                        <h3 class="font-display text-xl font-bold mb-3">Más que terapia</h3>
                         <p class="text-stone-600 dark:text-stone-300">Intervenimos más allá de la sesión: acompañamos al
                             niño en función de su vida real y contextos cotidianos.</p>
                     </div>
 
                     <!-- Card 2 -->
                     <div
-                        class="group bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-stone-100 dark:border-stone-800">
+                        class="group bg-white/80 dark:bg-stone-900/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-white/50 dark:border-stone-700/50">
                         <div
                             class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-nature-800/50 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                             <i class="ph-duotone ph-users-three text-nature-600 text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Enfoque interdisciplinario</h3>
+                        <h3 class="font-display text-xl font-bold mb-3">Enfoque interdisciplinario</h3>
                         <p class="text-stone-600 dark:text-stone-300">Consideramos no solo el diagnóstico, sino también
                             el contexto real en que cada niño vive, aprende y se relaciona.</p>
                     </div>
 
                     <!-- Card 3 -->
                     <div
-                        class="group bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-stone-100 dark:border-stone-800">
+                        class="group bg-white/80 dark:bg-stone-900/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 border border-white/50 dark:border-stone-700/50">
                         <div
                             class="w-14 h-14 bg-accent-500/10 dark:bg-accent-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                             <i class="ph-duotone ph-target text-accent-600 text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Resultados medibles</h3>
+                        <h3 class="font-display text-xl font-bold mb-3">Resultados medibles</h3>
                         <p class="text-stone-600 dark:text-stone-300">Los avances terapéuticos son funcionales,
                             significativos y transferibles a la casa, al colegio y a la comunidad.</p>
                     </div>
@@ -504,7 +537,7 @@
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <span class="text-sm font-semibold text-nature-600 uppercase tracking-widest">Nuestro Proceso</span>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">La Ruta del Crecimiento
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">La Ruta del Crecimiento
                     </h2>
                 </div>
 
@@ -512,7 +545,7 @@
                     <!-- Step 1 -->
                     <div class="relative group">
                         <div
-                            class="bg-neutral-50 dark:bg-stone-800/50 p-8 rounded-3xl h-full border border-transparent hover:border-nature-100 transition-all hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl">
+                            class="bg-white/70 dark:bg-stone-800/70 backdrop-blur-sm p-8 rounded-3xl h-full border border-white/50 dark:border-stone-700/50 hover:border-nature-200 transition-all hover:bg-white/90 dark:hover:bg-stone-800/90 hover:shadow-xl">
                             <div class="flex items-center justify-between mb-6">
                                 <div
                                     class="w-12 h-12 bg-nature-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
@@ -520,7 +553,7 @@
                                 <i
                                     class="ph-duotone ph-clipboard-text text-nature-600 text-3xl opacity-50 group-hover:opacity-100 transition-opacity"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Evaluación Inicial</h3>
+                            <h3 class="font-display text-xl font-bold mb-3">Evaluación Inicial</h3>
                             <p class="text-stone-600 dark:text-stone-300">Realizamos un diagnóstico exhaustivo de las
                                 capacidades sensoriales, motoras y cognitivas.</p>
                         </div>
@@ -531,7 +564,7 @@
                     <!-- Step 2 -->
                     <div class="relative group">
                         <div
-                            class="bg-neutral-50 dark:bg-stone-800/50 p-8 rounded-3xl h-full border border-transparent hover:border-nature-100 transition-all hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl">
+                            class="bg-white/70 dark:bg-stone-800/70 backdrop-blur-sm p-8 rounded-3xl h-full border border-white/50 dark:border-stone-700/50 hover:border-nature-200 transition-all hover:bg-white/90 dark:hover:bg-stone-800/90 hover:shadow-xl">
                             <div class="flex items-center justify-between mb-6">
                                 <div
                                     class="w-12 h-12 bg-nature-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
@@ -539,7 +572,7 @@
                                 <i
                                     class="ph-duotone ph-strategy text-nature-600 text-3xl opacity-50 group-hover:opacity-100 transition-opacity"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Plan Personalizado</h3>
+                            <h3 class="font-display text-xl font-bold mb-3">Plan Personalizado</h3>
                             <p class="text-stone-600 dark:text-stone-300">Diseñamos una estrategia terapéutica a medida,
                                 estableciendo objetivos claros con la familia.</p>
                         </div>
@@ -549,7 +582,7 @@
                     <!-- Step 3 -->
                     <div class="relative group">
                         <div
-                            class="bg-neutral-50 dark:bg-stone-800/50 p-8 rounded-3xl h-full border border-transparent hover:border-nature-100 transition-all hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl">
+                            class="bg-white/70 dark:bg-stone-800/70 backdrop-blur-sm p-8 rounded-3xl h-full border border-white/50 dark:border-stone-700/50 hover:border-nature-200 transition-all hover:bg-white/90 dark:hover:bg-stone-800/90 hover:shadow-xl">
                             <div class="flex items-center justify-between mb-6">
                                 <div
                                     class="w-12 h-12 bg-accent-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
@@ -557,7 +590,7 @@
                                 <i
                                     class="ph-duotone ph-users-three text-accent-600 text-3xl opacity-50 group-hover:opacity-100 transition-opacity"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Acompañamiento</h3>
+                            <h3 class="font-display text-xl font-bold mb-3">Acompañamiento</h3>
                             <p class="text-stone-600 dark:text-stone-300">Ejecutamos sesiones dinámicas y entregamos
                                 herramientas para el hogar.</p>
                         </div>
@@ -571,7 +604,7 @@
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <span class="text-sm font-semibold text-nature-400 uppercase tracking-widest">Testimonios</span>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">Confianza que genera
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">Confianza que genera
                         <span class="text-nature-400">bienestar</span>
                     </h2>
                 </div>
@@ -651,7 +684,7 @@
                     <!-- Información de contacto -->
                     <div class="space-y-8">
                         <div>
-                            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Estamos cerca de ti</h2>
+                            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4">Estamos cerca de ti</h2>
                             <p class="text-lg text-stone-600 dark:text-stone-300">Visítanos en nuestras instalaciones
                                 diseñadas específicamente para la comodidad y seguridad de los más pequeños.</p>
                         </div>
