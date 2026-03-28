@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth overflow-x-hidden" lang="es">
+<html class="scroll-smooth overflow-x-hidden w-full m-0 p-0" lang="es">
 
 <head>
     <meta charset="utf-8" />
@@ -277,13 +277,15 @@
 
         /* Mobile Menu Drawer Animation Logic */
         #mobile-menu {
-            transition: visibility 0.4s, opacity 0.4s;
-            display: block !important; /* Managed by invisible/opacity-0 classes */
+            transition: visibility 0.3s, opacity 0.3s;
+            display: block !important;
+            overscroll-behavior: none;
         }
         
         #mobile-menu-content {
             transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            overscroll-behavior: contain;
         }
 
         #mobile-menu.active {
@@ -293,6 +295,85 @@
 
         #mobile-menu.active #mobile-menu-content {
             transform: translateX(0);
+        }
+
+        /* Mobile Carousel Fixes */
+        @media (max-width: 640px) {
+            /* Fix wave-frame border-radius for mobile */
+            .wave-frame {
+                border-radius: 1.5rem !important;
+            }
+            .wave-shadow-bg {
+                border-radius: 1.5rem !important;
+                transform: translate(6px, 6px) !important;
+            }
+            .wave-container:hover .wave-shadow-bg {
+                border-radius: 1.5rem !important;
+                transform: translate(8px, 8px) !important;
+            }
+            
+            /* Carousel container adjustments */
+            .swiper.mySwiper {
+                border-radius: 1rem;
+            }
+            
+            /* Ensure carousel images maintain aspect ratio */
+            .swiper-slide img {
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 380px) {
+            .wave-frame {
+                border-radius: 1rem !important;
+            }
+            .wave-shadow-bg {
+                transform: translate(4px, 4px) !important;
+            }
+        }
+
+        /* Improve touch targets on mobile */
+        @media (max-width: 640px) {
+            .mobile-menu-item {
+                min-height: 56px;
+                padding: 1rem 0;
+            }
+            
+            #mobile-menu-btn {
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Prevent horizontal scroll on all devices */
+        .swiper-wrapper {
+            box-sizing: border-box;
+            transform: translate3d(0, 0, 0) !important;
+            backface-visibility: hidden;
+        }
+
+        /* Critical: Force GPU acceleration for smoother mobile carousel */
+        .swiper-slide {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-transform: translate3d(0, 0, 0);
+        }
+
+        /* Fix pagination on mobile */
+        @media (max-width: 640px) {
+            .swiper-pagination {
+                bottom: 12px !important;
+            }
+            .swiper-pagination-bullet {
+                width: 8px !important;
+                height: 8px !important;
+                margin: 0 4px !important;
+            }
         }
 
         .mobile-menu-item {
@@ -441,25 +522,17 @@
         }
 
         .wave-frame {
-            /* Superior redondeado asimétrico y inferior con "ola" */
-            border-radius: 8rem 3rem 0 0;
-            -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 95%, 70% 92%, 55% 95%, 40% 92%, 25% 95%, 10% 92%, 0% 95%);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 95%, 70% 92%, 55% 95%, 40% 92%, 25% 95%, 10% 92%, 0% 95%);
+            /* Diseño "Blob" orgánico robusto (Evita colapso GPU de iOS Safari) */
+            border-radius: 6rem 1.5rem 3rem 4rem;
             position: relative;
             z-index: 2;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            
-            /* Corrección GPU Ligera (Sin Masking agresivo que causa cajas grises) */
-            isolation: isolate;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0); 
+            overflow: hidden;
         }
 
         .wave-frame:hover {
-            -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 85% 92%, 70% 95%, 55% 92%, 40% 95%, 25% 92%, 10% 95%, 0% 92%);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 85% 92%, 70% 95%, 55% 92%, 40% 95%, 25% 92%, 10% 95%, 0% 92%);
-            -webkit-transform: scale(1.02) translateZ(0);
-            transform: scale(1.02) translateZ(0);
+            border-radius: 5rem 2rem 4rem 5rem;
+            transform: scale(1.02);
         }
 
         /* Decorative Background Under Wave */
@@ -467,18 +540,16 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, var(--pastel-yellow), var(--soft-coral));
-            border-radius: 8.5rem 3.5rem 0 0;
+            border-radius: 6rem 1.5rem 3rem 4rem;
             transform: translate(12px, 12px);
             z-index: 0;
             opacity: 0.6;
-            -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 95%, 70% 92%, 55% 95%, 40% 92%, 25% 95%, 10% 92%, 0% 95%);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 95%, 70% 92%, 55% 95%, 40% 92%, 25% 95%, 10% 92%, 0% 95%);
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .wave-container:hover .wave-shadow-bg {
-            transform: translate(15px, 15px) scale(1.01);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 85% 92%, 70% 95%, 55% 92%, 40% 95%, 25% 92%, 10% 95%, 0% 92%);
+            border-radius: 5rem 2rem 4rem 5rem;
+            transform: translate(16px, 16px) scale(1.02);
         }
 
         /* Creative Studio: Irregular Canvas Effect */
@@ -542,7 +613,7 @@
     </style>
 </head>
 
-<body class="bg-[var(--warm-cream)] text-stone-800 antialiased overflow-x-hidden">
+<body class="bg-[var(--warm-cream)] text-stone-800 antialiased overflow-x-hidden w-full max-w-[100vw] m-0 p-0 relative">
     <!-- Capa de Textura Acuarela (Global) -->
     <div class="watercolor-canvas"></div>
     
@@ -660,9 +731,9 @@
                                 de Rehabilitación</span>
                         </div>
 
-                        <!-- Headline Jerárquico -->
+                        <!-- Headline Jerárquico (Sin text-balance por Bug en Safari) -->
                         <h1
-                            class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance hero-title">
+                            class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] hero-title">
                             Especialistas en
                             <span class="brush-highlight">desarrollo</span>
                             infantil integral
@@ -699,15 +770,15 @@
                         </div>
                     </div>
 
-                    <!-- Imagen decorativa con Wave Mask -->
-                    <div class="relative animate-slide-up order-first lg:order-last px-4 sm:px-0 wave-container">
+                    <!-- Imagen decorativa con Wave Mask - Orden correcto en móvil -->
+                    <div class="relative animate-slide-up order-2 lg:order-last px-4 sm:px-0 wave-container">
                         <!-- Fondo con Degradado Somreado -->
                         <div class="wave-shadow-bg"></div>
                         
-                        <!-- Estructura Separada (GPU Hacker Fix para WebKit/Mobile) -->
-                        <div class="wave-frame w-full h-[280px] sm:h-[400px] md:h-[500px] overflow-hidden relative block drop-shadow-xl">
-                            <!-- Carrusel Limpio Sin Formas o Recortes Conflictivos -->
-                            <div class="swiper mySwiper w-full h-full relative z-10 bg-white">
+                        <!-- Estructura Separada Orgánica -->
+                        <div class="wave-frame w-full h-[260px] sm:h-[320px] md:h-[400px] lg:h-[500px] drop-shadow-xl block p-0 m-0">
+                            <!-- Carrusel Swiper (Aislado de formas conflictivas) -->
+                            <div class="swiper mySwiper w-full h-full bg-white overflow-hidden rounded-t-inherit sm:rounded-inherit">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
@@ -1284,6 +1355,15 @@
                 el: ".swiper-pagination",
                 clickable: true,
             },
+            effect: 'slide',
+            grabCursor: true,
+            touchEventsTarget: 'container',
+            // Mobile optimizations
+            breakpoints: {
+                320: {
+                    spaceBetween: 0,
+                }
+            }
         });
 
         // Testimonials Swiper
