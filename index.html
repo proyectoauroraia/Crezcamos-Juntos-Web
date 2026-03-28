@@ -264,6 +264,50 @@
             animation: none;
         }
 
+        /* Tablet/Mobile Enhancements & iOS Fixes */
+        @media (max-width: 640px) {
+            .mobile-safe-top { padding-top: env(safe-area-inset-top); }
+            body { font-size: 16px; min-height: -webkit-fill-available; }
+            input, textarea, select { font-size: 16px !important; } /* Stop iOS auto-zoom on focus */
+            button, a { -webkit-tap-highlight-color: transparent; }
+        }
+
+        /* Mobile Menu Drawer Animation Logic */
+        #mobile-menu {
+            transition: visibility 0.4s, opacity 0.4s;
+            display: block !important; /* Managed by invisible/opacity-0 classes */
+        }
+        
+        #mobile-menu-content {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #mobile-menu.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #mobile-menu.active #mobile-menu-content {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .mobile-menu-item:active {
+            transform: scale(0.98);
+            opacity: 0.7;
+        }
+
         .swiper-pagination-bullet-active {
             background: #00a89e !important;
         }
@@ -463,27 +507,43 @@
         </div>
 
         <!-- Mobile Menu Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40">
-            <div class="absolute inset-0 bg-stone-900/50 backdrop-blur-sm" id="mobile-menu-overlay"></div>
-            <div class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-stone-900 shadow-xl p-6">
-                <div class="flex justify-between items-center mb-8">
-                    <span class="font-bold text-lg">Menú</span>
-                    <button id="mobile-menu-close" class="p-2 text-stone-600 hover:text-stone-900">
-                        <i class="ph ph-x text-2xl"></i>
+        <div id="mobile-menu" class="invisible opacity-0 fixed inset-0 z-[60] transition-all">
+            <div class="absolute inset-0 bg-stone-900/40 backdrop-blur-md" id="mobile-menu-overlay"></div>
+            <div id="mobile-menu-content" class="absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white dark:bg-stone-900 shadow-2xl p-8 flex flex-col">
+                <div class="flex justify-between items-center mb-10">
+                    <div class="flex items-center gap-2">
+                        <img src="assets/logo.png?v=2026.6" class="w-8 h-8 rounded-full" alt="Logo">
+                        <span class="font-bold text-lg tracking-tight">Crezcamos Juntos</span>
+                    </div>
+                    <button id="mobile-menu-close" class="p-2 w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600">
+                        <i class="ph ph-x text-xl"></i>
                     </button>
                 </div>
-                <nav class="flex flex-col gap-4">
-                    <a href="#quienes"
-                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Nosotros</a>
-                    <a href="#servicios"
-                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Servicios</a>
-                    <a href="#testimonios"
-                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Testimonios</a>
-                    <a href="#contacto"
-                        class="text-lg font-medium text-stone-600 hover:text-nature-600 transition-colors mobile-menu-link">Contacto</a>
-                    <a href="#contacto"
-                        class="mt-4 bg-[#00a89e] text-white px-5 py-3 rounded-full font-semibold text-center hover:bg-[#008b83] transition-all mobile-menu-link">Agendar
-                        Cita</a>
+                <nav class="flex flex-col flex-grow">
+                    <a href="#quienes" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+                        <i class="ph-duotone ph-house-line text-2xl text-nature-500"></i>
+                        <span>Nosotros</span>
+                    </a>
+                    <a href="#servicios" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+                        <i class="ph-duotone ph-sparkle text-2xl text-nature-500"></i>
+                        <span>Servicios</span>
+                    </a>
+                    <a href="#testimonios" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+                        <i class="ph-duotone ph-chat-circle-dots text-2xl text-nature-500"></i>
+                        <span>Testimonios</span>
+                    </a>
+                    <a href="#contacto" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+                        <i class="ph-duotone ph-envelope-simple text-2xl text-nature-500"></i>
+                        <span>Contacto</span>
+                    </a>
+                    
+                    <div class="mt-auto pb-10">
+                        <a href="https://wa.me/56988805733"
+                            class="block w-full bg-[#00a89e] text-white p-4 rounded-2xl font-bold text-center shadow-lg shadow-nature-500/20 active:scale-95 transition-all">
+                            Agendar Cita por WhatsApp
+                        </a>
+                        <p class="text-center text-stone-400 text-xs mt-4 italic">Crecimiento y bienestar para tu familia</p>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -1033,12 +1093,14 @@
         const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
 
         function openMobileMenu() {
-            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('active');
+            mobileMenu.classList.remove('invisible', 'opacity-0');
             document.body.style.overflow = 'hidden';
         }
 
         function closeMobileMenu() {
-            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('active');
+            mobileMenu.classList.add('invisible', 'opacity-0');
             document.body.style.overflow = '';
         }
 
