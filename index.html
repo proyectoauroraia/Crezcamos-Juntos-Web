@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" name="viewport" />
     <title>Crezcamos Juntos | Terapia Ocupacional Pediátrica Especializada</title>
     <meta name="description"
         content="Centro de rehabilitación pediátrica especializado en terapia ocupacional para niños y adolescentes. Atención personalizada y interdisciplinaria." />
@@ -187,6 +187,18 @@
                 font-size: 2.15rem !important;
                 line-height: 1.2 !important;
             }
+            
+            /* Improve readability on small screens */
+            h1, h2, h3, h4 {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Ensure paragraphs don't overflow */
+            p {
+                max-width: 100%;
+                overflow-wrap: break-word;
+            }
         }
 
         @media (max-width: 400px) {
@@ -348,6 +360,29 @@
                 align-items: center;
                 justify-content: center;
             }
+            
+            /* Minimum touch target sizes for accessibility */
+            a, button, .tap-target {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Ensure proper font sizes for readability on mobile */
+            p, .text-stone-600 {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            
+            /* Increase text size in testimonials for readability */
+            .glass-card p {
+                font-size: 1rem;
+            }
+            
+            /* Larger buttons on mobile */
+            .levitate {
+                min-height: 48px;
+                padding: 0.75rem 1.5rem;
+            }
         }
 
         /* Prevent horizontal scroll on all devices */
@@ -355,6 +390,63 @@
             box-sizing: border-box;
             transform: translate3d(0, 0, 0) !important;
             backface-visibility: hidden;
+        }
+
+        /* Mobile-specific overflow fixes */
+        @media (max-width: 640px) {
+            /* Ensure sections don't overflow */
+            section {
+                overflow-x: hidden;
+                max-width: 100vw;
+            }
+            
+            /* Fix grid overflow */
+            .grid {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+            
+            /* Fix horizontal padding issues */
+            .px-4, .px-6, .px-8 {
+                max-width: 100%;
+            }
+            
+            /* Ensure images don't overflow */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* Fix cards that might overflow */
+            .bg-white\/40, .bg-white\/70, .bg-white\/80, .bg-white\/90 {
+                max-width: calc(100% - 1rem);
+            }
+            
+            /* Section spacing adjustments for small screens */
+            .py-20 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            /* Reduce margins on small screens */
+            .gap-8 {
+                gap: 1.5rem;
+            }
+            
+            .gap-12 {
+                gap: 2rem;
+            }
+            
+            /* Fix carousel container */
+            .mySwiper {
+                max-width: 100%;
+                overflow: hidden;
+            }
+            
+            /* Fix glass cards */
+            .glass-card {
+                max-width: 100%;
+            }
         }
 
         /* Critical: Force GPU acceleration for smoother mobile carousel */
@@ -373,6 +465,31 @@
                 width: 8px !important;
                 height: 8px !important;
                 margin: 0 4px !important;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero-title {
+                font-size: 1.75rem !important;
+            }
+            section {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 320px) {
+            html {
+                font-size: 12px;
+            }
+            .hero-title {
+                font-size: 1.5rem !important;
+            }
+            .levitate {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
             }
         }
 
