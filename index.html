@@ -703,25 +703,27 @@
                         <!-- Fondo con Degradado Somreado -->
                         <div class="wave-shadow-bg"></div>
                         
-                        <!-- Swiper con Swave Frame -->
-                        <div
-                            class="swiper mySwiper w-full h-[280px] sm:h-[400px] md:h-[500px] overflow-hidden wave-frame shadow-2xl">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
-                                        alt="Centro de rehabilitación pediátrica">
+                        <!-- Estructura Separada (GPU Hacker Fix para WebKit/Mobile) -->
+                        <div class="wave-frame w-full h-[280px] sm:h-[400px] md:h-[500px] overflow-hidden shadow-2xl relative block">
+                            <!-- Carrusel Limpio Sin Formas o Recortes Conflictivos -->
+                            <div class="swiper mySwiper w-full h-full relative z-10">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
+                                            alt="Centro de rehabilitación pediátrica">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/2.JPG?v=2026.1" class="w-full h-full object-cover"
+                                            alt="Terapia ocupacional">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/3.jpg?v=2026.1" class="w-full h-full object-cover"
+                                            alt="Instalaciones">
+                                    </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/2.JPG?v=2026.1" class="w-full h-full object-cover"
-                                        alt="Terapia ocupacional">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/3.jpg?v=2026.1" class="w-full h-full object-cover"
-                                        alt="Instalaciones">
-                                </div>
-                            </div>
 
-                            <div class="swiper-pagination"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
                         </div>
 
                     </div>
@@ -1272,7 +1274,6 @@
         // Logic removed to keep navbar always consistent
 
         const swiper = new Swiper(".mySwiper", {
-            effect: "fade",
             loop: true,
             autoplay: {
                 delay: 4000,
