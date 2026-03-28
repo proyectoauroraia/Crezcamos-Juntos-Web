@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -63,10 +63,12 @@
                         cream: '#fdfbf7',
                         sand: '#f5f0eb',
                         sage: '#8da399',
+                        pastelYellow: '#FFF4B0',
+                        softCoral: '#FFB7B2',
                     },
                     fontFamily: {
-                        display: ['Quicksand', 'system-ui', 'sans-serif'],
-                        body: ['system-ui', '-apple-system', 'sans-serif'],
+                        display: ['Comfortaa', 'Quicksand', 'system-ui', 'sans-serif'],
+                        body: ['Quicksand', 'system-ui', '-apple-system', 'sans-serif'],
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out',
@@ -99,6 +101,8 @@
             --color-trust: #0ea5e9;
             --color-nature: #00a89e;
             --color-accent: #f97316;
+            --pastel-yellow: #FFF4B0;
+            --soft-coral: #FFB7B2;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -262,12 +266,71 @@
             width: 100%;
         }
 
+        /* Typography Refinement */
+        h1, h2, h3 {
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
+
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
         .delay-400 { animation-delay: 400ms; }
         .delay-500 { animation-delay: 500ms; }
         .delay-600 { animation-delay: 600ms; }
+
+        /* Highlight Marker Effect - More Subtle */
+        .highlight-yellow {
+            background: linear-gradient(120deg, var(--pastel-yellow, #FFF4B0) 0%, var(--pastel-yellow, #FFF4B0) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.4em;
+            background-position: 0 88%;
+            transition: background-size 0.25s ease-in;
+            display: inline;
+            padding: 0 4px;
+        }
+
+        .highlight-coral {
+            background: linear-gradient(120deg, var(--soft-coral, #FFB7B2) 0%, var(--soft-coral, #FFB7B2) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.4em;
+            background-position: 0 88%;
+            transition: background-size 0.25s ease-in;
+            display: inline;
+            padding: 0 4px;
+        }
+
+        /* Option C: Wave Mask Frame */
+        .wave-container {
+            position: relative;
+            padding: 10px;
+        }
+
+        .wave-frame {
+            /* Superior redondeado asimétrico y inferior con "ola" */
+            border-radius: 8rem 3rem 0 0;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 95%, 70% 92%, 55% 95%, 40% 92%, 25% 95%, 10% 92%, 0% 95%);
+            position: relative;
+            z-index: 2;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .wave-frame:hover {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 85% 92%, 70% 95%, 55% 92%, 40% 95%, 25% 92%, 10% 95%, 0% 92%);
+            transform: scale(1.02);
+        }
+
+        /* Decorative Background Under Wave */
+        .wave-shadow-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--pastel-yellow), var(--soft-coral));
+            border-radius: 8.5rem 3.5rem 0 0;
+            transform: translate(12px, 12px);
+            z-index: 0;
+            opacity: 0.6;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 95%, 70% 92%, 55% 95%, 40% 92%, 25% 95%, 10% 92%, 0% 95%);
+        }
     </style>
 </head>
 
@@ -365,13 +428,13 @@
                         <h1
                             class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance hero-title">
                             Especialistas en
-                            <span class="text-nature-600">desarrollo</span>
+                            <span class="highlight-yellow">desarrollo</span>
                             infantil integral
                         </h1>
 
                         <p class="text-lg sm:text-xl text-stone-600 dark:text-stone-300 leading-relaxed max-w-xl mx-auto sm:mx-0">
                             Brindamos terapia ocupacional clínica de alta especialidad para niños y adolescentes,
-                            centrada en la autonomía y el bienestar familiar.
+                            centrada en la <span class="highlight-coral">autonomía</span> y el bienestar familiar.
                         </p>
 
                         <!-- CTAs -->
@@ -391,19 +454,23 @@
                         <div class="flex justify-center sm:justify-start gap-8 pt-4 text-sm">
                             <div class="flex items-center gap-2">
                                 <span class="font-bold text-2xl text-nature-600">100+</span>
-                                <span class="text-stone-500 text-xs sm:text-sm">familias</span>
+                                <span class="text-stone-500 text-xs sm:text-sm highlight-yellow">familias</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <span class="font-bold text-2xl text-nature-500">8+</span>
-                                <span class="text-stone-500 text-xs sm:text-sm">años exp.</span>
+                                <span class="text-stone-500 text-xs sm:text-sm highlight-coral">años exp.</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Imagen decorativa -->
-                    <div class="relative animate-slide-up order-first lg:order-last px-4 sm:px-0">
+                    <!-- Imagen decorativa con Wave Mask -->
+                    <div class="relative animate-slide-up order-first lg:order-last px-4 sm:px-0 wave-container">
+                        <!-- Fondo con Degradado Somreado -->
+                        <div class="wave-shadow-bg"></div>
+                        
+                        <!-- Swiper con Swave Frame -->
                         <div
-                            class="swiper mySwiper w-full h-[240px] sm:h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
+                            class="swiper mySwiper w-full h-[240px] sm:h-[400px] md:h-[500px] overflow-hidden wave-frame shadow-2xl">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
@@ -435,9 +502,9 @@
                     <div class="space-y-6">
                         <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
                             Compromiso con la
-                            <span class="text-nature-600">transformación</span> infantil
+                            <span class="highlight-yellow">transformación</span> infantil
                         </h2>
-                        <div class="w-16 h-1 bg-accent-500 rounded-full"></div>
+                        <div class="w-16 h-1 bg-softCoral rounded-full"></div>
                         <p class="text-lg text-stone-600 dark:text-stone-300 leading-relaxed">
                             En <strong class="text-stone-800 dark:text-stone-100">Crezcamos Juntos</strong>, entendemos
                             que cada niño tiene un ritmo y potencial único. Nuestra clínica nace de la necesidad de
