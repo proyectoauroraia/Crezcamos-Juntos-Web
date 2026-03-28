@@ -175,6 +175,19 @@
             html {
                 font-size: 14px;
             }
+            .hero-title {
+                font-size: 2.15rem !important;
+                line-height: 1.2 !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            html {
+                font-size: 13px;
+            }
+            .hero-title {
+                font-size: 1.85rem !important;
+            }
         }
 
         ::selection {
@@ -263,12 +276,12 @@
     <nav
         class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm dark:bg-stone-900/95 dark:border-stone-800/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-24 lg:h-28">
+            <div class="flex items-center justify-between h-20 sm:h-24 lg:h-28">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
                     <img src="assets/logo.png?v=2026.6" alt="Logo Crezcamos Juntos"
-                        class="w-[88px] h-[88px] rounded-full shadow-sm hover:scale-110 transition-transform object-cover animate-scale-in"
-                        style="clip-path: circle(40%);">
+                        class="w-16 h-16 sm:w-[88px] sm:h-[88px] rounded-full shadow-sm hover:scale-110 transition-transform object-cover animate-scale-in"
+                        style="clip-path: circle(45%);">
                     <span class="font-semibold text-lg tracking-tight hidden sm:block animate-fade-in delay-100">Crezcamos Juntos</span>
                 </a>
 
@@ -339,7 +352,7 @@
             <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     <!-- Contenido textual -->
-                    <div class="space-y-6 lg:space-y-8 animate-fade-in">
+                    <div class="space-y-6 lg:space-y-8 animate-fade-in text-center sm:text-left">
                         <div
                             class="inline-flex items-center gap-2 px-4 py-2 bg-nature-500/10 dark:bg-nature-400/10 rounded-full border border-nature-500/20 backdrop-blur-sm">
                             <i class="ph-duotone ph-heartbeat text-nature-600 dark:text-nature-400 text-sm"></i>
@@ -350,13 +363,13 @@
 
                         <!-- Headline Jerárquico -->
                         <h1
-                            class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance">
+                            class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance hero-title">
                             Especialistas en
                             <span class="text-nature-600">desarrollo</span>
                             infantil integral
                         </h1>
 
-                        <p class="text-lg sm:text-xl text-stone-600 dark:text-stone-300 leading-relaxed max-w-xl">
+                        <p class="text-lg sm:text-xl text-stone-600 dark:text-stone-300 leading-relaxed max-w-xl mx-auto sm:mx-0">
                             Brindamos terapia ocupacional clínica de alta especialidad para niños y adolescentes,
                             centrada en la autonomía y el bienestar familiar.
                         </p>
@@ -375,22 +388,22 @@
                         </div>
 
                         <!-- Stats minimalistas -->
-                        <div class="flex gap-8 pt-4 text-sm">
+                        <div class="flex justify-center sm:justify-start gap-8 pt-4 text-sm">
                             <div class="flex items-center gap-2">
                                 <span class="font-bold text-2xl text-nature-600">100+</span>
-                                <span class="text-stone-500">familias</span>
+                                <span class="text-stone-500 text-xs sm:text-sm">familias</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <span class="font-bold text-2xl text-nature-500">8+</span>
-                                <span class="text-stone-500">años exp.</span>
+                                <span class="text-stone-500 text-xs sm:text-sm">años exp.</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Imagen decorativa -->
-                    <div class="relative animate-slide-up">
+                    <div class="relative animate-slide-up order-first lg:order-last px-4 sm:px-0">
                         <div
-                            class="swiper mySwiper w-full h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
+                            class="swiper mySwiper w-full h-[240px] sm:h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
@@ -439,9 +452,9 @@
                     </div>
 
                     <!-- Cards de características -->
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-users text-nature-600 text-2xl"></i>
@@ -450,7 +463,7 @@
                             <p class="text-sm text-stone-500">Profesionales certificados con formación continua</p>
                         </div>
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all sm:translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-house-line text-nature-600 text-2xl"></i>
@@ -459,7 +472,7 @@
                             <p class="text-sm text-stone-500">Involucramos a los padres en cada etapa</p>
                         </div>
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-brain text-nature-600 text-2xl"></i>
@@ -468,7 +481,7 @@
                             <p class="text-sm text-stone-500">Abordamos desarrollo cognitivo, motor y emocional</p>
                         </div>
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all sm:translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-chart-line-up text-nature-600 text-2xl"></i>
@@ -696,7 +709,7 @@
                                     class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
                                     <i class="ph-duotone ph-map-pin text-nature-600 text-2xl"></i>
                                 </div>
-                                <div class="pt-2">
+                                <div class="pt-2 text-left">
                                     <h4 class="font-bold text-stone-900 dark:text-stone-100">Dirección</h4>
                                     <p class="text-stone-600 dark:text-stone-400">Michimalongo 212, Población San Luis,
                                         Rancagua, Chile</p>
@@ -709,7 +722,7 @@
                                     class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
                                     <i class="ph-duotone ph-phone text-nature-600 text-2xl"></i>
                                 </div>
-                                <div class="pt-2">
+                                <div class="pt-2 text-left">
                                     <h4 class="font-bold text-stone-900 dark:text-stone-100">Teléfono</h4>
                                     <p class="text-stone-600 dark:text-stone-400">+56 9 8880 5733</p>
                                 </div>
@@ -721,7 +734,7 @@
                                     class="w-14 h-14 bg-gradient-to-br from-accent-50 to-accent-100 dark:from-accent-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
                                     <i class="ph-duotone ph-clock text-accent-600 text-2xl"></i>
                                 </div>
-                                <div class="pt-2">
+                                <div class="pt-2 text-left">
                                     <h4 class="font-bold text-stone-900 dark:text-stone-100">Horario</h4>
                                     <p class="text-stone-600 dark:text-stone-400">Lun-Vie: 09:00 - 19:00 hrs<br>Sábados:
                                         09:00 - 13:00 hrs</p>
@@ -734,7 +747,7 @@
                                     class="w-14 h-14 bg-gradient-to-br from-nature-50 to-nature-100 dark:from-nature-900/50 dark:to-stone-700/50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
                                     <i class="ph-duotone ph-envelope text-nature-600 text-2xl"></i>
                                 </div>
-                                <div class="pt-2">
+                                <div class="pt-2 text-left">
                                     <h4 class="font-bold text-stone-900 dark:text-stone-100">Email</h4>
                                     <p class="text-stone-600 dark:text-stone-400">Reinaldoperez.to@gmail.com</p>
                                 </div>
@@ -750,8 +763,8 @@
                     </div>
 
                     <!-- Mapa -->
-                    <div class="relative">
-                        <div class="bg-stone-200 dark:bg-stone-800 rounded-3xl overflow-hidden h-[400px]">
+                    <div class="relative px-2 sm:px-0">
+                        <div class="bg-stone-200 dark:bg-stone-800 rounded-3xl overflow-hidden h-[280px] sm:h-[400px]">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.90561571216!2d-70.7420542!3d-34.1673859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663437145e69e8b%3A0xc3f60f6479a8e98!2sMichimalongo%20212%2C%20Rancagua%2C%20O'Higgins!5e0!3m2!1ses-419!2scl!4v1711000000000!5m2!1ses-419!2scl"
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
