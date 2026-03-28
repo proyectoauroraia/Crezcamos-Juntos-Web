@@ -449,16 +449,17 @@
             z-index: 2;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             
-            /* Hacks de GPU recomendados por la comunidad (Stack Overflow / Swiper) para WebKit/Mobile */
-            -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fuerza el respeto del border-radius en el overflow */
-            -webkit-backface-visibility: hidden;
-            -webkit-transform: translate3d(0, 0, 0); /* Evita el colapso de capa gráfica en iOS/Android */
+            /* Corrección GPU Ligera (Sin Masking agresivo que causa cajas grises) */
+            isolation: isolate;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0); 
         }
 
         .wave-frame:hover {
             -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 85% 92%, 70% 95%, 55% 92%, 40% 95%, 25% 92%, 10% 95%, 0% 92%);
             clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 85% 92%, 70% 95%, 55% 92%, 40% 95%, 25% 92%, 10% 95%, 0% 92%);
-            transform: scale(1.02) translate3d(0, 0, 0);
+            -webkit-transform: scale(1.02) translateZ(0);
+            transform: scale(1.02) translateZ(0);
         }
 
         /* Decorative Background Under Wave */
@@ -704,9 +705,9 @@
                         <div class="wave-shadow-bg"></div>
                         
                         <!-- Estructura Separada (GPU Hacker Fix para WebKit/Mobile) -->
-                        <div class="wave-frame w-full h-[280px] sm:h-[400px] md:h-[500px] overflow-hidden shadow-2xl relative block">
+                        <div class="wave-frame w-full h-[280px] sm:h-[400px] md:h-[500px] overflow-hidden relative block drop-shadow-xl">
                             <!-- Carrusel Limpio Sin Formas o Recortes Conflictivos -->
-                            <div class="swiper mySwiper w-full h-full relative z-10">
+                            <div class="swiper mySwiper w-full h-full relative z-10 bg-white">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
