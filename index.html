@@ -313,16 +313,48 @@
 
         /* Glassmorphism Testimonial Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.08),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(0, 168, 158, 0.4);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
         }
 
         .testimonial-swiper {
-            padding-bottom: 50px !important;
+            padding-bottom: 70px !important;
+            padding-top: 20px !important;
         }
 
         .quote-icon {
@@ -748,7 +780,7 @@
                 <div class="swiper testimonial-swiper" data-aos="fade-up">
                     <div class="swiper-wrapper">
                         <!-- Testimonio 1 -->
-                        <div class="swiper-slide p-4">
+                        <div class="swiper-slide p-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="glass-card p-10 h-full relative overflow-hidden group">
                                 <i class="ph-fill ph-quotes quote-icon group-hover:scale-110 transition-transform"></i>
                                 <div class="flex gap-1 text-pastelYellow mb-6">
@@ -770,7 +802,7 @@
                         </div>
 
                         <!-- Testimonio 2 -->
-                        <div class="swiper-slide p-4">
+                        <div class="swiper-slide p-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="glass-card p-10 h-full relative overflow-hidden group">
                                 <i class="ph-fill ph-quotes quote-icon group-hover:scale-110 transition-transform"></i>
                                 <div class="flex gap-1 text-pastelYellow mb-6">
@@ -792,7 +824,7 @@
                         </div>
 
                         <!-- Testimonio 3 -->
-                        <div class="swiper-slide p-4">
+                        <div class="swiper-slide p-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="glass-card p-10 h-full relative overflow-hidden group">
                                 <i class="ph-fill ph-quotes quote-icon group-hover:scale-110 transition-transform"></i>
                                 <div class="flex gap-1 text-pastelYellow mb-6">
