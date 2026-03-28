@@ -104,6 +104,9 @@
             --color-accent: #f97316;
             --pastel-yellow: #FFF4B0;
             --soft-coral: #FFB7B2;
+            --warm-cream: #FCF8F3;
+            --pale-sand: #F7F2EC;
+            --soft-peach: #FFF5F0;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -455,17 +458,97 @@
         .wave-shadow-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to right, var(--pastel-yellow), var(--soft-coral));
+            background: linear-gradient(135deg, var(--pastel-yellow), var(--soft-coral));
             border-radius: 8.5rem 3.5rem 0 0;
             transform: translate(12px, 12px);
             z-index: 0;
             opacity: 0.6;
             clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 95%, 70% 92%, 55% 95%, 40% 92%, 25% 95%, 10% 92%, 0% 95%);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .wave-container:hover .wave-shadow-bg {
+            transform: translate(15px, 15px) scale(1.01);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 85% 92%, 70% 95%, 55% 92%, 40% 95%, 25% 92%, 10% 95%, 0% 92%);
+        }
+
+        /* Creative Studio: Irregular Canvas Effect */
+        .watercolor-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png'); /* Very faint noise/paper */
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Hand-drawn borders for cards */
+        .hand-drawn-card {
+            border-radius: 30px 6px 30px 6px / 6px 30px 6px 30px;
+            border: 2px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hand-drawn-card:hover {
+            border-radius: 6px 30px 6px 30px / 30px 6px 30px 6px;
+            border-color: var(--nature-200);
+            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Brushstroke Highlight */
+        .brush-highlight {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brush-highlight::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            bottom: -2px;
+            width: calc(100% + 20px);
+            height: 12px;
+            background: var(--pastel-yellow);
+            z-index: -1;
+            opacity: 0.7;
+            clip-path: polygon(0% 15%, 15% 0%, 85% 15%, 100% 0%, 95% 85%, 85% 100%, 15% 85%, 0% 100%);
+            transform: rotate(-1deg);
+        }
+
+        .blob-bg {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--pastel-yellow) 0%, transparent 70%);
+            filter: blur(100px);
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 50%;
+            mix-blend-mode: multiply;
+        }
+
+        .blob-bg-coral {
+            background: radial-gradient(circle, var(--soft-coral) 0%, transparent 70%);
         }
     </style>
 </head>
 
-<body class="bg-neutral-50 text-stone-800 antialiased">
+<body class="bg-[var(--warm-cream)] text-stone-800 antialiased overflow-x-hidden">
+    <!-- Capa de Textura Acuarela (Global) -->
+    <div class="watercolor-canvas"></div>
+    
+    <!-- Blobs decorativos globales (fondo no clínico) -->
+    <div class="blob-bg top-[-100px] left-[-100px] animate-pulse"></div>
+    <div class="blob-bg blob-bg-coral bottom-[20%] right-[-100px] opacity-15"></div>
+
+    <!-- Doodles Decorativos Sutiles -->
+    <div class="absolute top-[500px] left-[50px] opacity-10 rotate-12 pointer-events-none group">
+        <i class="ph ph-sparkle text-8xl text-softCoral"></i>
+    </div>
+    <div class="absolute top-[1200px] right-[50px] opacity-10 -rotate-12 pointer-events-none">
+        <i class="ph ph-heart text-7xl text-pastelYellow"></i>
+    </div>
+    
     <!-- Navegación minimalista -->
     <nav id="main-nav"
         class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 border-b border-transparent">
@@ -575,13 +658,13 @@
                         <h1
                             class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance hero-title">
                             Especialistas en
-                            <span class="highlight-yellow">desarrollo</span>
+                            <span class="brush-highlight">desarrollo</span>
                             infantil integral
                         </h1>
 
                         <p class="text-lg sm:text-xl text-stone-600 dark:text-stone-300 leading-relaxed max-w-xl mx-auto sm:mx-0">
                             Brindamos terapia ocupacional clínica de alta especialidad para niños y adolescentes,
-                            centrada en la <span class="highlight-coral">autonomía</span> y el bienestar familiar.
+                            centrada en la <span class="brush-highlight">autonomía</span> y el bienestar familiar.
                         </p>
 
                         <!-- CTAs -->
@@ -642,14 +725,15 @@
         </section>
 
         <!-- Quiénes Somos - minimalista -->
-        <section id="quienes" class="py-20 lg:py-32 bg-white dark:bg-stone-900 reveal">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="quienes" class="py-20 lg:py-32 bg-[var(--warm-cream)] relative overflow-hidden reveal">
+            <div class="blob-bg top-[10%] right-[-200px] opacity-10"></div>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
                     <!-- Texto principal -->
                     <div class="space-y-6">
                         <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
                             Compromiso con la
-                            <span class="highlight-yellow">transformación</span> infantil
+                            <span class="brush-highlight">transformación</span> infantil
                         </h2>
                         <div class="w-16 h-1 bg-softCoral rounded-full"></div>
                         <p class="text-lg text-stone-600 dark:text-stone-300 leading-relaxed">
@@ -666,42 +750,47 @@
                     </div>
 
                     <!-- Cards de características -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
+                        <!-- Doodle Connector -->
+                        <div class="absolute -top-10 -right-10 opacity-10 rotate-45">
+                            <i class="ph ph-sketch-logo text-9xl"></i>
+                        </div>
+                        
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-white/40 dark:bg-stone-800/50 p-4 sm:p-8 hand-drawn-card space-y-4 hover:shadow-2xl transition-all border border-transparent">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-users text-nature-600 text-2xl"></i>
                             </div>
                             <h3 class="font-display font-bold text-lg">Equipo Expertos</h3>
-                            <p class="text-sm text-stone-500">Profesionales certificados con formación continua</p>
+                            <p class="text-sm text-stone-500 italic">Profesionales certificados con formación continua</p>
                         </div>
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all sm:translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-white/40 dark:bg-stone-800/50 p-4 sm:p-8 hand-drawn-card space-y-4 hover:shadow-2xl transition-all sm:translate-y-4 border border-transparent">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-house-line text-nature-600 text-2xl"></i>
                             </div>
                             <h3 class="font-display font-bold text-lg">Enfoque Familiar</h3>
-                            <p class="text-sm text-stone-500">Involucramos a los padres en cada etapa</p>
+                            <p class="text-sm text-stone-500 italic">Involucramos a los padres en cada etapa</p>
                         </div>
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-white/40 dark:bg-stone-800/50 p-4 sm:p-8 hand-drawn-card space-y-4 hover:shadow-2xl transition-all border border-transparent">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-brain text-nature-600 text-2xl"></i>
                             </div>
                             <h3 class="font-display font-bold text-lg">Visión Integral</h3>
-                            <p class="text-sm text-stone-500">Abordamos desarrollo cognitivo, motor y emocional</p>
+                            <p class="text-sm text-stone-500 italic">Abordamos desarrollo cognitivo, motor y emocional</p>
                         </div>
                         <div
-                            class="group bg-neutral-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-2xl space-y-4 hover:bg-white dark:hover:bg-stone-800 hover:shadow-xl hover:-translate-y-1 transition-all sm:translate-y-4 border border-transparent hover:border-nature-100 dark:hover:border-stone-700">
+                            class="group bg-white/40 dark:bg-stone-800/50 p-4 sm:p-8 hand-drawn-card space-y-4 hover:shadow-2xl transition-all sm:translate-y-4 border border-transparent">
                             <div
                                 class="w-12 h-12 bg-nature-100 dark:bg-nature-900/50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="ph-duotone ph-chart-line-up text-nature-600 text-2xl"></i>
                             </div>
                             <h3 class="font-display font-bold text-lg">Resultados</h3>
-                            <p class="text-sm text-stone-500">Metodologías validadas para progreso sostenible</p>
+                            <p class="text-sm text-stone-500 italic">Metodologías validadas para progreso sostenible</p>
                         </div>
                     </div>
                 </div>
@@ -709,8 +798,9 @@
         </section>
 
         <!-- Diferencial -->
-        <section class="py-20 lg:py-32 bg-neutral-50 dark:bg-stone-800 reveal">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="py-20 lg:py-32 bg-[var(--pale-sand)] relative overflow-hidden reveal">
+            <div class="blob-bg bottom-[5%] left-[-150px] blob-bg-coral opacity-15"></div>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16 space-y-4">
                     <span class="text-sm font-semibold text-nature-600 uppercase tracking-widest">¿Qué nos
                         diferencia?</span>
@@ -760,8 +850,9 @@
         </section>
 
         <!-- Servicios / Metodología -->
-        <section id="servicios" class="py-20 lg:py-32 bg-white dark:bg-stone-900 reveal">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="servicios" class="py-20 lg:py-32 bg-[var(--soft-peach)] relative overflow-hidden reveal">
+            <div class="blob-bg top-[-5%] left-[-200px] opacity-10"></div>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16">
                     <span class="text-sm font-semibold text-nature-600 uppercase tracking-widest">Nuestro Proceso</span>
                     <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">La Ruta del Crecimiento
