@@ -284,19 +284,23 @@
             overscroll-behavior: none;
         }
         
+        /* Estilos Robustos para el Menú Móvil */
+        #mobile-menu {
+            transition: visibility 0.4s, opacity 0.4s;
+            pointer-events: none;
+        }
+        #mobile-menu.active {
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto;
+        }
         #mobile-menu-content {
             transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            overscroll-behavior: contain;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background-color: white !important;
         }
-
-        #mobile-menu.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
         #mobile-menu.active #mobile-menu-content {
-            transform: translateX(0);
+            transform: translateX(0) !important;
         }
 
         /* Mobile Carousel Fixes */
@@ -784,38 +788,45 @@
 </head>
 
 <body class="bg-[var(--warm-cream)] text-stone-800 antialiased overflow-x-hidden w-full max-w-[100vw] m-0 p-0 relative">
-    <!-- Mobile Menu Drawer (Moved to root for layout stability) -->
-    <div id="mobile-menu" class="invisible opacity-0 fixed inset-0 z-[70] transition-all">
-        <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-md" id="mobile-menu-overlay"></div>
-        <div id="mobile-menu-content" class="fixed right-0 top-0 h-full w-[85%] max-w-sm bg-white dark:bg-stone-900 shadow-2xl p-8 flex flex-col z-[71]">
-            <div class="flex justify-between items-center mb-10">
+    <!-- Mobile Menu Drawer (Reforzado) -->
+    <div id="mobile-menu" class="invisible opacity-0 fixed inset-0 z-[100] transition-all duration-300">
+        <!-- Overlay oscuro con blur -->
+        <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm" id="mobile-menu-overlay"></div>
+        
+        <!-- Drawer Content: Forzado blanco sólido y posición fija -->
+        <div id="mobile-menu-content" 
+             class="fixed right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl flex flex-col z-[101] transform translate-x-full transition-transform duration-300 ease-in-out"
+             style="background-color: #ffffff !important;">
+            
+            <div class="flex justify-between items-center p-6 border-b border-stone-100">
                 <div class="flex items-center gap-2">
                     <img src="assets/logo.png?v=2026.6" class="w-8 h-8 rounded-full" alt="Logo">
-                    <span class="font-bold text-lg tracking-tight">Crezcamos Juntos</span>
+                    <span class="font-bold text-lg tracking-tight text-stone-900">Crezcamos Juntos</span>
                 </div>
-                <button id="mobile-menu-close" class="p-2 w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600">
+                <button id="mobile-menu-close" class="p-2 w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 text-stone-600 hover:bg-stone-200 transition-colors">
                     <i class="ph ph-x text-xl"></i>
                 </button>
             </div>
-            <nav class="flex flex-col flex-grow">
-                <a href="#quienes" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+            
+            <nav class="flex flex-col flex-grow p-6 gap-2 bg-white">
+                <a href="#quienes" class="mobile-menu-link flex items-center gap-4 p-4 rounded-xl text-stone-800 hover:bg-nature-50 transition-colors">
                     <i class="ph-duotone ph-house-line text-2xl text-nature-500"></i>
-                    <span>Nosotros</span>
+                    <span class="font-semibold">Nosotros</span>
                 </a>
-                <a href="#servicios" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+                <a href="#servicios" class="mobile-menu-link flex items-center gap-4 p-4 rounded-xl text-stone-800 hover:bg-nature-50 transition-colors">
                     <i class="ph-duotone ph-sparkle text-2xl text-nature-500"></i>
-                    <span>Servicios</span>
+                    <span class="font-semibold">Servicios</span>
                 </a>
-                <a href="#testimonios" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+                <a href="#testimonios" class="mobile-menu-link flex items-center gap-4 p-4 rounded-xl text-stone-800 hover:bg-nature-50 transition-colors">
                     <i class="ph-duotone ph-chat-circle-dots text-2xl text-nature-500"></i>
-                    <span>Testimonios</span>
+                    <span class="font-semibold">Testimonios</span>
                 </a>
-                <a href="#contacto" class="mobile-menu-item text-stone-800 dark:text-stone-100 mobile-menu-link">
+                <a href="#contacto" class="mobile-menu-link flex items-center gap-4 p-4 rounded-xl text-stone-800 hover:bg-nature-50 transition-colors">
                     <i class="ph-duotone ph-envelope-simple text-2xl text-nature-500"></i>
-                    <span>Contacto</span>
+                    <span class="font-semibold">Contacto</span>
                 </a>
                 
-                <div class="mt-auto pb-10">
+                <div class="mt-auto pt-6">
                     <a href="https://wa.me/56988805733"
                         class="block w-full bg-[#00a89e] text-white p-4 rounded-2xl font-bold text-center shadow-lg shadow-nature-500/20 active:scale-95 transition-all">
                         Agendar Cita por WhatsApp
