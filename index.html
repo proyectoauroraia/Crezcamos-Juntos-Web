@@ -474,6 +474,13 @@
             display: block;
         }
 
+        /* Ensure <picture> fills the slide */
+        .swiper-slide picture {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
         /* Fix pagination on mobile */
         @media (max-width: 640px) {
             .swiper-pagination {
@@ -916,16 +923,25 @@
                             <div class="swiper mySwiper w-full h-full bg-white overflow-hidden" style="border-radius: inherit;">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
-                                            alt="Centro de rehabilitación pediátrica" loading="eager">
+                                        <picture>
+                                            <source srcset="assets/hero-image.webp?v=2026.2" type="image/webp">
+                                            <img src="assets/hero-image.jpg?v=2026.2" class="w-full h-full object-cover"
+                                                alt="Centro de rehabilitación pediátrica" loading="eager">
+                                        </picture>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="assets/2.JPG?v=2026.1" class="w-full h-full object-cover"
-                                            alt="Terapia ocupacional" loading="lazy">
+                                        <picture>
+                                            <source srcset="assets/2.webp?v=2026.2" type="image/webp">
+                                            <img src="assets/2.jpg?v=2026.2" class="w-full h-full object-cover"
+                                                alt="Terapia ocupacional" loading="lazy">
+                                        </picture>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="assets/3.jpg?v=2026.1" class="w-full h-full object-cover"
-                                            alt="Instalaciones" loading="lazy">
+                                        <picture>
+                                            <source srcset="assets/3.webp?v=2026.2" type="image/webp">
+                                            <img src="assets/3.jpg?v=2026.2" class="w-full h-full object-cover"
+                                                alt="Instalaciones" loading="lazy">
+                                        </picture>
                                     </div>
                                 </div>
 
