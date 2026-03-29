@@ -145,33 +145,23 @@
             z-index: 0;
         }
 
-        body::before {
-            width: 400px;
-            height: 400px;
-            background: #00a89e;
-            top: -100px;
-            right: -100px;
-            animation: floatOrb 15s ease-in-out infinite;
-        }
-
-        body::after {
-            width: 350px;
-            height: 350px;
-            background: #00a89e;
-            bottom: -50px;
-            left: -50px;
-            animation: floatOrb 18s ease-in-out infinite reverse;
-        }
-
         @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(240px, 240px); }
+        }
 
-            0%,
-            100% {
-                transform: translate(0, 0);
+        /* Layout Rescue: Disable problematic floating elements on small screens */
+        @media (max-width: 640px) {
+            body::before, body::after {
+                display: none !important;
+                animation: none !important;
             }
-
-            50% {
-                transform: translate(240px, 240px);
+            .blob-bg {
+                display: none !important;
+                animation: none !important;
+            }
+            #app-wrapper {
+                overflow-x: hidden !important;
             }
         }
 
@@ -395,14 +385,6 @@
             -webkit-backface-visibility: hidden;
         }
 
-        .swiper-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            display: block;
-        }
-
         /* Mobile-specific overflow fixes */
         @media (max-width: 640px) {
             /* Ensure sections don't overflow */
@@ -422,8 +404,8 @@
                 max-width: 100%;
             }
             
-            /* Ensure images don't overflow */
-            img {
+            /* Ensure images don't overflow — EXCEPT carousel images which need height:100% */
+            img:not(.swiper-slide img) {
                 max-width: 100%;
                 height: auto;
             }
@@ -433,6 +415,13 @@
                 height: 100% !important;
                 width: 100% !important;
                 object-fit: cover !important;
+                object-position: center center !important;
+            }
+
+            /* Fix CTA buttons stretching in flex-col mobile layout */
+            .levitate {
+                width: auto !important;
+                align-self: center;
             }
             
             /* Fix cards that might overflow */
@@ -504,19 +493,13 @@
             }
         }
 
-        .swiper-slide img {
+        /* Consolidated: carousel image fills the slide — single source of truth */
+        .mySwiper .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center center;
             display: block;
-        }
-
-        /* Ensure <picture> fills the slide */
-        .swiper-slide picture {
-            display: block;
-            width: 100%;
-            height: 100%;
         }
 
         /* Fix pagination on mobile */
@@ -801,6 +784,8 @@
 </head>
 
 <body class="bg-[var(--warm-cream)] text-stone-800 antialiased overflow-x-hidden w-full max-w-[100vw] m-0 p-0 relative">
+    <!-- Layout Rescue: Security wrapper for absolute floating elements -->
+    <div id="app-wrapper" class="relative w-full overflow-x-hidden m-0 p-0">
     <!-- Capa de Textura Acuarela (Global) -->
     <div class="watercolor-canvas"></div>
     
@@ -932,14 +917,17 @@
                         </p>
 
                         <!-- CTAs -->
-                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <!-- CTAs: flex-col en mobile (centrados), flex-row en sm+ -->
+                        <div class="flex flex-col items-center sm:items-start sm:flex-row gap-4 pt-2">
                             <a href="https://wa.me/56988805733?text=Hola,%20quiero%20agendar%20una%20sesión"
-                                class="levitate agendar-sesion inline-flex items-center justify-center gap-2 bg-[#00a89e] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#008b83] transition-all text-center">
-                                <i class="ph ph-whatsapp-logo text-xl pulse"></i>
+                                class="levitate agendar-sesion inline-flex items-center justify-center gap-2 bg-[#00a89e] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#008b83] transition-all text-center"
+                                aria-label="Agendar sesión por WhatsApp">
+                                <i class="ph ph-whatsapp-logo text-xl pulse" aria-hidden="true"></i>
                                 Agendar Sesión
                             </a>
                             <a href="#servicios"
-                                class="levitate inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold border-2 border-stone-200 dark:border-stone-700 hover:border-nature-500 hover:text-nature-600 transition-all text-center">
+                                class="levitate inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold border-2 border-stone-200 dark:border-stone-700 hover:border-nature-500 hover:text-nature-600 transition-all text-center"
+                                aria-label="Ver nuestros servicios">
                                 Ver Servicios
                             </a>
                         </div>
@@ -958,7 +946,7 @@
                     </div>
 
                     <!-- Imagen decorativa con Wave Mask - Orden correcto en móvil -->
-                    <div class="relative order-2 lg:order-last px-4 sm:px-0 wave-container">
+                    <div class="relative order-2 lg:order-last px-4 sm:px-0 wave-container w-full min-w-0 overflow-hidden">
                         <!-- Fondo con Degradado Somreado -->
                         <div class="wave-shadow-bg"></div>
                         
@@ -967,26 +955,29 @@
                             <!-- Carrusel Swiper (Aislado de formas conflictivas) -->
                             <div class="swiper mySwiper w-full h-full bg-white overflow-hidden" style="border-radius: inherit;">
                                 <div class="swiper-wrapper">
+                                    <!-- Slide 1: Hero Image -->
                                     <div class="swiper-slide">
-                                        <picture>
-                                            <source srcset="assets/hero-image.webp?v=2026.2" type="image/webp">
-                                            <img src="assets/hero-image.jpg?v=2026.2" class="w-full h-full object-cover"
-                                                alt="Centro de rehabilitación pediátrica" loading="eager">
-                                        </picture>
+                                        <img src="assets/hero-image.webp?v=2026.3"
+                                            class="w-full h-full object-cover"
+                                            alt="Centro de rehabilitación pediátrica Crezcamos Juntos"
+                                            width="1920" height="1440"
+                                            loading="eager">
                                     </div>
+                                    <!-- Slide 2 -->
                                     <div class="swiper-slide">
-                                        <picture>
-                                            <source srcset="assets/2.webp?v=2026.2" type="image/webp">
-                                            <img src="assets/2.jpg?v=2026.2" class="w-full h-full object-cover"
-                                                alt="Terapia ocupacional" loading="lazy">
-                                        </picture>
+                                        <img src="assets/2.webp?v=2026.3"
+                                            class="w-full h-full object-cover"
+                                            alt="Sesión de terapia ocupacional para niños"
+                                            width="1920" height="1440"
+                                            loading="lazy">
                                     </div>
+                                    <!-- Slide 3 -->
                                     <div class="swiper-slide">
-                                        <picture>
-                                            <source srcset="assets/3.webp?v=2026.2" type="image/webp">
-                                            <img src="assets/3.jpg?v=2026.2" class="w-full h-full object-cover"
-                                                alt="Instalaciones" loading="lazy">
-                                        </picture>
+                                        <img src="assets/3.webp?v=2026.3"
+                                            class="w-full h-full object-cover"
+                                            alt="Instalaciones del centro Crezcamos Juntos"
+                                            width="1920" height="1440"
+                                            loading="lazy">
                                     </div>
                                 </div>
 
@@ -1582,6 +1573,7 @@
             });
         });
     </script>
+    </div> <!-- Close #app-wrapper -->
 </body>
 
 </html>
