@@ -427,6 +427,13 @@
                 max-width: 100%;
                 height: auto;
             }
+
+            /* CRITICAL: Carousel images must NOT inherit height:auto — they need 100% */
+            .mySwiper .swiper-slide img {
+                height: 100% !important;
+                width: 100% !important;
+                object-fit: cover !important;
+            }
             
             /* Fix cards that might overflow */
             .bg-white\/40, .bg-white\/70, .bg-white\/80, .bg-white\/90 {
@@ -464,6 +471,37 @@
         .swiper-slide {
             width: 100%;
             height: 100%;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-transform: translate3d(0, 0, 0);
+        }
+
+        /* CRITICAL: Explicit heights for hero carousel — do NOT rely on h-full inheritance */
+        .mySwiper,
+        .mySwiper .swiper-wrapper,
+        .mySwiper .swiper-slide {
+            height: 260px !important;
+        }
+        @media (min-width: 640px) {
+            .mySwiper,
+            .mySwiper .swiper-wrapper,
+            .mySwiper .swiper-slide {
+                height: 320px !important;
+            }
+        }
+        @media (min-width: 768px) {
+            .mySwiper,
+            .mySwiper .swiper-wrapper,
+            .mySwiper .swiper-slide {
+                height: 400px !important;
+            }
+        }
+        @media (min-width: 1024px) {
+            .mySwiper,
+            .mySwiper .swiper-wrapper,
+            .mySwiper .swiper-slide {
+                height: 500px !important;
+            }
         }
 
         .swiper-slide img {
@@ -1494,48 +1532,47 @@
         const mainNav = document.getElementById('main-nav');
         // Logic removed to keep navbar always consistent
 
-        const swiper = new Swiper(".mySwiper", {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 0,
-            speed: 400,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            effect: 'slide',
-            grabCursor: true,
-            touchEventsTarget: 'container',
-            observer: true,
-            observeSlideChildren: true,
-            runCallbacksOnInit: true,
-        });
+        // FIXED: Wrapped in window.load so Tailwind CDN has applied all styles before
+        // Swiper measures container dimensions. Without this, Swiper can measure 0px height.
+        window.addEventListener('load', function () {
+            const swiper = new Swiper(".mySwiper", {
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".mySwiper .swiper-pagination",
+                    clickable: true,
+                },
+                effect: 'slide',
+                grabCursor: true,
+                touchEventsTarget: 'container',
+                breakpoints: {
+                    320: { spaceBetween: 0 }
+                },
+                on: {
+                    afterInit: function (sw) { sw.update(); }
+                }
+            });
 
-        // Testimonials Swiper
-        const testimonialSwiper = new Swiper(".testimonial-swiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
+            const testimonialSwiper = new Swiper(".testimonial-swiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
                 },
-                1024: {
-                    slidesPerView: 3,
+                pagination: {
+                    el: ".testimonial-swiper .swiper-pagination",
+                    clickable: true,
                 },
-            },
+                breakpoints: {
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                },
+            });
         });
     </script>
 </body>
