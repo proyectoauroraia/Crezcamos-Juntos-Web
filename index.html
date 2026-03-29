@@ -708,6 +708,13 @@
             z-index: 2;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             overflow: hidden;
+            /* CRITICAL: Force permanent GPU compositing layer on iOS Safari.
+               Prevents overflow:hidden + border-radius clipping from failing
+               after parent animations end and release their GPU layers. */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         .wave-frame:hover {
@@ -951,7 +958,7 @@
                     </div>
 
                     <!-- Imagen decorativa con Wave Mask - Orden correcto en móvil -->
-                    <div class="relative animate-slide-up order-2 lg:order-last px-4 sm:px-0 wave-container">
+                    <div class="relative order-2 lg:order-last px-4 sm:px-0 wave-container">
                         <!-- Fondo con Degradado Somreado -->
                         <div class="wave-shadow-bg"></div>
                         
