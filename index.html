@@ -388,8 +388,8 @@
         /* Prevent horizontal scroll on all devices */
         .swiper-wrapper {
             box-sizing: border-box;
-            transform: translate3d(0, 0, 0) !important;
             backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         /* Mobile-specific overflow fixes */
@@ -895,19 +895,19 @@
                         <!-- Estructura Separada Orgánica -->
                         <div class="wave-frame w-full h-[260px] sm:h-[320px] md:h-[400px] lg:h-[500px] shadow-2xl block p-0 m-0 bg-white">
                             <!-- Carrusel Swiper (Aislado de formas conflictivas) -->
-                            <div class="swiper mySwiper w-full h-full bg-white overflow-hidden rounded-t-inherit sm:rounded-inherit">
+                            <div class="swiper mySwiper w-full h-full bg-white overflow-hidden" style="border-radius: inherit;">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <img src="assets/hero-image.jpg?v=2026.1" class="w-full h-full object-cover"
-                                            alt="Centro de rehabilitación pediátrica">
+                                            alt="Centro de rehabilitación pediátrica" loading="eager">
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="assets/2.JPG?v=2026.1" class="w-full h-full object-cover"
-                                            alt="Terapia ocupacional">
+                                            alt="Terapia ocupacional" loading="lazy">
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="assets/3.jpg?v=2026.1" class="w-full h-full object-cover"
-                                            alt="Instalaciones">
+                                            alt="Instalaciones" loading="lazy">
                                     </div>
                                 </div>
 
@@ -1375,8 +1375,6 @@
             </div>
         </div>
     </footer>
-
-    </a>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
