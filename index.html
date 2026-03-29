@@ -387,9 +387,20 @@
 
         /* Prevent horizontal scroll on all devices */
         .swiper-wrapper {
+            width: 100%;
+            height: 100%;
             box-sizing: border-box;
+            transform: translate3d(0, 0, 0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+        }
+
+        .swiper-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
         }
 
         /* Mobile-specific overflow fixes */
@@ -451,9 +462,16 @@
 
         /* Critical: Force GPU acceleration for smoother mobile carousel */
         .swiper-slide {
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-transform: translate3d(0, 0, 0);
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
         }
 
         /* Fix pagination on mobile */
@@ -1462,6 +1480,9 @@
 
         const swiper = new Swiper(".mySwiper", {
             loop: true,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            speed: 400,
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
@@ -1473,12 +1494,9 @@
             effect: 'slide',
             grabCursor: true,
             touchEventsTarget: 'container',
-            // Mobile optimizations
-            breakpoints: {
-                320: {
-                    spaceBetween: 0,
-                }
-            }
+            observer: true,
+            observeSlideChildren: true,
+            runCallbacksOnInit: true,
         });
 
         // Testimonials Swiper
